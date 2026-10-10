@@ -1,0 +1,55 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    name: pytest (${{ matrix.os }}, py${{ matrix.python }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        python: ["3.11", "3.12", "3.13", "3.14"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+          allow-prereleases: true
+      - name: Install
+        run: python -m pip install -e ".[dev]"
+      - name: Test
+        run: python -m pytest -q
+      - name: Single-file validator on the examples
+        run: python tools/opi_verify.py examples/*.opi
+      - name: Bundle drift check
+        run: python tools/build_bundle.py --check
+
+  scrub:
+    name: no private identifiers in tracked content
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Sweep (pattern from the 2026-08-30 ingest handoff; bracket-broken so this file cannot self-match)
+        run: |
+          if git grep -n -i -E "dspur[y]|/private/tm[p]|/[U]sers/|ll_po[s]t|llm[s]0"; then
+            echo "::error::Private identifier found above. Replace with a synthetic value; history must stay clean."
+            exit 1
+          fi
+
+  stdlib-only:
+    name: validator runs with no install
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Copy the bundle alone and run it
+        run: |
+          mkdir /tmp/clean && cp tools/opi_verify.py examples/*.opi /tmp/clean/
+          cd /tmp/clean && python opi_verify.py *.opi

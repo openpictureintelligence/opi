@@ -1,0 +1,113 @@
+site_name: Open Picture Intelligence
+site_description: "An open, signed sidecar for intelligence about media. The .opi format, specification and reference implementation."
+# The organisation Pages URL, which serves first. This becomes
+# https://openpictureintelligence.org/ at the DNS step, together with
+# docs/CNAME — canonical links and the sitemap follow whatever serves,
+# so this must not name a domain that does not resolve yet.
+site_url: https://openpictureintelligence.github.io/opi/
+repo_url: https://github.com/openpictureintelligence/opi
+repo_name: openpictureintelligence/opi
+edit_uri: edit/main/docs/
+copyright: "Specification, schemas and reference implementation — Apache License 2.0. Format version 0, pre-freeze."
+
+theme:
+  name: material
+  language: en
+  custom_dir: docs/overrides
+  palette:
+    # One palette. The site is a document, not an app: near-black chrome,
+    # warm off-white reading surface, one orange accent. No mode toggle —
+    # the reading surface is the design, not a preference.
+    scheme: opi
+    primary: custom
+    accent: custom
+  font:
+    text: Inter
+    code: JetBrains Mono
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - navigation.footer
+    - navigation.indexes
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.tabs.link
+
+extra_css:
+  - stylesheets/opi.css
+
+# Fail the strict build on every kind of broken reference: a page missing
+# from nav, a link to a page that does not exist, an anchor that is not on
+# the target page, an absolute-path link. The launch gate is that every
+# navigation item and every internal link resolves.
+validation:
+  omitted_files: warn
+  not_found: warn
+  absolute_links: warn
+  unrecognized_links: warn
+  anchors: warn
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+      toc_depth: 3
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: false
+      linenums: false
+      use_pygments: true
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.snippets:
+      base_path: [".", "docs"]
+      check_paths: true
+
+plugins:
+  - search
+
+nav:
+  - Home: index.md
+  - Why .opi: why.md
+  - Quickstart: quickstart.md
+  - Adopt .opi: adoption.md
+  - Concepts:
+      - Overview: concepts/index.md
+      - The file and its profiles: concepts/file-and-profiles.md
+      - Runs and signatures: concepts/runs-and-signatures.md
+      - The human layer: concepts/human-layer.md
+      - Members — embeddings and stills: concepts/members.md
+      - Facets: concepts/facets.md
+  - Build with .opi:
+      - Overview: build/index.md
+      - Producer workflow: build/producers.md
+      - Consumer workflow: build/consumers.md
+      - Reading into a store: build/reading-into-a-store.md
+      - The smallest useful integration: build/integration.md
+      - Interoperability: build/interop.md
+  - Reference:
+      - Overview: reference/index.md
+      - Specification: spec/index.md
+      - Command line: reference/cli.md
+      - Python API: reference/python-api.md
+      - Standalone validator: reference/validator.md
+      - JSON Schemas: reference/schema.md
+  - Status: status.md
+  - Contribute:
+      - Overview: contribute/index.md
+      - Contribution rules: contribute/rules.md
+      - Code of Conduct: contribute/code-of-conduct.md
+      - Security: contribute/security.md
+      - Governance: contribute/governance.md
+      - Proposing a spec change: contribute/propose.md

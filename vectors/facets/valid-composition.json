@@ -1,0 +1,17 @@
+{
+  "facet": "composition",
+  "entry": {
+    "span": {
+      "frame_in": 0,
+      "frame_out": 101
+    },
+    "subject_detected": true,
+    "headroom": 0.08,
+    "leadroom": 0.31,
+    "rule_of_thirds": 0.9,
+    "symmetry": 0.42,
+    "horizon_tilt_deg": -0.6,
+    "subject_position": "left",
+    "coverage": 1.0
+  }
+}

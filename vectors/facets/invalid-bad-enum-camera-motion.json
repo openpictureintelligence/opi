@@ -1,0 +1,13 @@
+{
+  "facet": "camera_motion",
+  "entry": {
+    "span": {
+      "frame_in": 0,
+      "frame_out": 10
+    },
+    "verb": "swoosh",
+    "samples": 4,
+    "confidence": 0.5
+  },
+  "expect_failure_in": "verb"
+}

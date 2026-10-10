@@ -1,0 +1,18 @@
+{
+  "facet": "usability",
+  "entry": {
+    "kind": "usability",
+    "span": {
+      "frame_in": 0,
+      "frame_out": 101
+    },
+    "payload": {
+      "blur_var": 412.7,
+      "mean_luma": 0.36,
+      "peak_luma": 0.91,
+      "low_luma_ratio": 0.0,
+      "audio_rms_dbfs": -26.2,
+      "frame_count_sampled": 4
+    }
+  }
+}

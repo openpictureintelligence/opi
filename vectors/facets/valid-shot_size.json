@@ -1,0 +1,14 @@
+{
+  "facet": "shot_size",
+  "entry": {
+    "span": {
+      "frame_in": 0,
+      "frame_out": 101
+    },
+    "value": "MCU",
+    "subject_height_ratio": 0.58,
+    "subject": "person",
+    "iptc_scene_code": "010200",
+    "confidence": 0.83
+  }
+}

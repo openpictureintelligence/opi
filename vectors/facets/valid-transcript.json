@@ -1,0 +1,18 @@
+{
+  "facet": "transcript",
+  "entry": {
+    "kind": "transcript",
+    "text": "rolling camera",
+    "span": {
+      "frame_in": 24,
+      "frame_out": 60,
+      "t_start_s": 1.0,
+      "t_end_s": 2.5
+    },
+    "confidence": 0.95,
+    "payload": {
+      "language": "en",
+      "speaker": "SPEAKER_00"
+    }
+  }
+}

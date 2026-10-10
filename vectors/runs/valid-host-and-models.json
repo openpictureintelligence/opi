@@ -1,0 +1,60 @@
+{
+  "manifest": {
+    "opi": 0,
+    "profile": "core",
+    "media_binding": {
+      "timecode": {
+        "start": "00:00:00:00",
+        "rate": {
+          "num": 24000,
+          "den": 1001
+        },
+        "drop_frame": false
+      },
+      "files": [
+        {
+          "role": "original",
+          "name": "clip.mov",
+          "size": 3,
+          "sha256": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad"
+        }
+      ]
+    },
+    "machine_intelligence": [
+      {
+        "run_id": "189a369c6086ff0a04f42f318ca7390f",
+        "producer": "shots:scenedetect",
+        "model_version": "0.7",
+        "generated_at": "2026-08-29T20:00:00Z",
+        "host": {
+          "os": "macos",
+          "arch": "arm64",
+          "accelerator": "metal"
+        },
+        "models": [
+          {
+            "name": "scenedetect-0.7.pt",
+            "sha256": "cdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcd"
+          }
+        ],
+        "egress": "none",
+        "facets": {
+          "shots": [
+            {
+              "idx": 0,
+              "confidence": 0.9,
+              "span": {
+                "frame_in": 0,
+                "frame_out": 48
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "editorial_annotations": {}
+  },
+  "expect": {
+    "all_ok": true
+  }
+}

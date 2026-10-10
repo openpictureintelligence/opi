@@ -1,0 +1,96 @@
+{
+  "manifest": {
+    "opi": 0,
+    "profile": "core",
+    "media_binding": {
+      "timecode": {
+        "start": "00:00:00:00",
+        "rate": {
+          "num": 24000,
+          "den": 1001
+        },
+        "drop_frame": false
+      },
+      "files": [
+        {
+          "role": "original",
+          "name": "clip.mov",
+          "size": 3,
+          "sha256": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad"
+        }
+      ]
+    },
+    "machine_intelligence": [
+      {
+        "run_id": "ae376c03119b8fb64601add4403be7d9",
+        "producer": "shots:scenedetect",
+        "model_version": "scenedetect-0.7",
+        "generated_at": "2026-08-29T20:00:00Z",
+        "facets": {
+          "shots": [
+            {
+              "idx": 0,
+              "confidence": 0.9,
+              "span": {
+                "frame_in": 0,
+                "frame_out": 48
+              }
+            }
+          ]
+        }
+      },
+      {
+        "run_id": "c0f3bc54629c84388f9fffec7806b3c5",
+        "producer": "shots:scenedetect",
+        "model_version": "scenedetect-0.8",
+        "generated_at": "2026-09-01T10:00:00Z",
+        "supersedes": "ae376c03119b8fb64601add4403be7d9",
+        "facets": {
+          "shots": [
+            {
+              "idx": 0,
+              "confidence": 0.93,
+              "span": {
+                "frame_in": 0,
+                "frame_out": 48
+              }
+            }
+          ]
+        }
+      },
+      {
+        "run_id": "a1d13be5b1c35536080e1ac029dce185",
+        "producer": "asr:whisper",
+        "model_version": "large-v3",
+        "generated_at": "2026-08-29T20:05:00Z",
+        "depends_on": [
+          "ae376c03119b8fb64601add4403be7d9"
+        ],
+        "egress": "none",
+        "facets": {
+          "transcript": [
+            {
+              "text": "rolling",
+              "confidence": 0.97,
+              "span": {
+                "frame_in": 10,
+                "frame_out": 40
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "editorial_annotations": {}
+  },
+  "expect": {
+    "current": [
+      "c0f3bc54629c84388f9fffec7806b3c5",
+      "a1d13be5b1c35536080e1ac029dce185"
+    ],
+    "lineage_of_new": [
+      "c0f3bc54629c84388f9fffec7806b3c5",
+      "ae376c03119b8fb64601add4403be7d9"
+    ]
+  }
+}

@@ -1,0 +1,516 @@
+{
+ "description": "Frame index <-> SMPTE ST 12 label <-> exact seconds. frames are from the media head; seconds = frames*den/num exactly. Drop-frame labels use ';' before FF (convention, not spec); either separator MUST be accepted on input.",
+ "cases": [
+  {
+   "rate": {
+    "num": 30000,
+    "den": 1001
+   },
+   "drop_frame": true,
+   "label": "00:00:00;00",
+   "frames": 0,
+   "seconds": {
+    "num": 0,
+    "den": 1
+   }
+  },
+  {
+   "rate": {
+    "num": 30000,
+    "den": 1001
+   },
+   "drop_frame": true,
+   "label": "00:00:59;29",
+   "frames": 1799,
+   "seconds": {
+    "num": 1800799,
+    "den": 30000
+   }
+  },
+  {
+   "rate": {
+    "num": 30000,
+    "den": 1001
+   },
+   "drop_frame": true,
+   "label": "00:01:00;02",
+   "frames": 1800,
+   "seconds": {
+    "num": 3003,
+    "den": 50
+   }
+  },
+  {
+   "rate": {
+    "num": 30000,
+    "den": 1001
+   },
+   "drop_frame": true,
+   "label": "00:01:00;03",
+   "frames": 1801,
+   "seconds": {
+    "num": 1802801,
+    "den": 30000
+   }
+  },
+  {
+   "rate": {
+    "num": 30000,
+    "den": 1001
+   },
+   "drop_frame": true,
+   "label": "00:09:59;29",
+   "frames": 17981,
+   "seconds": {
+    "num": 17998981,
+    "den": 30000
+   }
+  },
+  {
+   "rate": {
+    "num": 30000,
+    "den": 1001
+   },
+   "drop_frame": true,
+   "label": "00:10:00;00",
+   "frames": 17982,
+   "seconds": {
+    "num": 2999997,
+    "den": 5000
+   }
+  },
+  {
+   "rate": {
+    "num": 30000,
+    "den": 1001
+   },
+   "drop_frame": true,
+   "label": "00:10:00;01",
+   "frames": 17983,
+   "seconds": {
+    "num": 18000983,
+    "den": 30000
+   }
+  },
+  {
+   "rate": {
+    "num": 30000,
+    "den": 1001
+   },
+   "drop_frame": true,
+   "label": "00:11:00;02",
+   "frames": 19782,
+   "seconds": {
+    "num": 3300297,
+    "den": 5000
+   }
+  },
+  {
+   "rate": {
+    "num": 30000,
+    "den": 1001
+   },
+   "drop_frame": true,
+   "label": "01:00:00;00",
+   "frames": 107892,
+   "seconds": {
+    "num": 8999991,
+    "den": 2500
+   }
+  },
+  {
+   "rate": {
+    "num": 30000,
+    "den": 1001
+   },
+   "drop_frame": true,
+   "label": "01:00:59;29",
+   "frames": 109691,
+   "seconds": {
+    "num": 109800691,
+    "den": 30000
+   }
+  },
+  {
+   "rate": {
+    "num": 30000,
+    "den": 1001
+   },
+   "drop_frame": true,
+   "label": "01:01:00;02",
+   "frames": 109692,
+   "seconds": {
+    "num": 9150141,
+    "den": 2500
+   }
+  },
+  {
+   "rate": {
+    "num": 30000,
+    "den": 1001
+   },
+   "drop_frame": true,
+   "label": "09:59:59;29",
+   "frames": 1078919,
+   "seconds": {
+    "num": 1079997919,
+    "den": 30000
+   }
+  },
+  {
+   "rate": {
+    "num": 30000,
+    "den": 1001
+   },
+   "drop_frame": true,
+   "label": "10:00:00;00",
+   "frames": 1078920,
+   "seconds": {
+    "num": 8999991,
+    "den": 250
+   }
+  },
+  {
+   "rate": {
+    "num": 30000,
+    "den": 1001
+   },
+   "drop_frame": true,
+   "label": "23:59:59;29",
+   "frames": 2589407,
+   "seconds": {
+    "num": 2591996407,
+    "den": 30000
+   }
+  },
+  {
+   "rate": {
+    "num": 60000,
+    "den": 1001
+   },
+   "drop_frame": true,
+   "label": "00:00:59;59",
+   "frames": 3599,
+   "seconds": {
+    "num": 3602599,
+    "den": 60000
+   }
+  },
+  {
+   "rate": {
+    "num": 60000,
+    "den": 1001
+   },
+   "drop_frame": true,
+   "label": "00:01:00;04",
+   "frames": 3600,
+   "seconds": {
+    "num": 3003,
+    "den": 50
+   }
+  },
+  {
+   "rate": {
+    "num": 60000,
+    "den": 1001
+   },
+   "drop_frame": true,
+   "label": "00:09:59;59",
+   "frames": 35963,
+   "seconds": {
+    "num": 35998963,
+    "den": 60000
+   }
+  },
+  {
+   "rate": {
+    "num": 60000,
+    "den": 1001
+   },
+   "drop_frame": true,
+   "label": "00:10:00;00",
+   "frames": 35964,
+   "seconds": {
+    "num": 2999997,
+    "den": 5000
+   }
+  },
+  {
+   "rate": {
+    "num": 60000,
+    "den": 1001
+   },
+   "drop_frame": true,
+   "label": "00:10:00;03",
+   "frames": 35967,
+   "seconds": {
+    "num": 12000989,
+    "den": 20000
+   }
+  },
+  {
+   "rate": {
+    "num": 60000,
+    "den": 1001
+   },
+   "drop_frame": true,
+   "label": "01:00:00;00",
+   "frames": 215784,
+   "seconds": {
+    "num": 8999991,
+    "den": 2500
+   }
+  },
+  {
+   "rate": {
+    "num": 60000,
+    "den": 1001
+   },
+   "drop_frame": true,
+   "label": "23:59:59;59",
+   "frames": 5178815,
+   "seconds": {
+    "num": 1036798763,
+    "den": 12000
+   }
+  },
+  {
+   "rate": {
+    "num": 24000,
+    "den": 1001
+   },
+   "drop_frame": false,
+   "label": "00:00:00:00",
+   "frames": 0,
+   "seconds": {
+    "num": 0,
+    "den": 1
+   }
+  },
+  {
+   "rate": {
+    "num": 24000,
+    "den": 1001
+   },
+   "drop_frame": false,
+   "label": "01:00:00:00",
+   "frames": 86400,
+   "seconds": {
+    "num": 18018,
+    "den": 5
+   }
+  },
+  {
+   "rate": {
+    "num": 24000,
+    "den": 1001
+   },
+   "drop_frame": false,
+   "label": "01:00:00:23",
+   "frames": 86423,
+   "seconds": {
+    "num": 86509423,
+    "den": 24000
+   }
+  },
+  {
+   "rate": {
+    "num": 24000,
+    "den": 1001
+   },
+   "drop_frame": false,
+   "label": "01:00:01:00",
+   "frames": 86424,
+   "seconds": {
+    "num": 3604601,
+    "den": 1000
+   }
+  },
+  {
+   "rate": {
+    "num": 24000,
+    "den": 1001
+   },
+   "drop_frame": false,
+   "label": "23:59:59:23",
+   "frames": 2073599,
+   "seconds": {
+    "num": 2075672599,
+    "den": 24000
+   }
+  },
+  {
+   "rate": {
+    "num": 30000,
+    "den": 1001
+   },
+   "drop_frame": false,
+   "label": "00:00:59:29",
+   "frames": 1799,
+   "seconds": {
+    "num": 1800799,
+    "den": 30000
+   }
+  },
+  {
+   "rate": {
+    "num": 30000,
+    "den": 1001
+   },
+   "drop_frame": false,
+   "label": "00:01:00:00",
+   "frames": 1800,
+   "seconds": {
+    "num": 3003,
+    "den": 50
+   }
+  },
+  {
+   "rate": {
+    "num": 30000,
+    "den": 1001
+   },
+   "drop_frame": false,
+   "label": "01:00:00:00",
+   "frames": 108000,
+   "seconds": {
+    "num": 18018,
+    "den": 5
+   }
+  },
+  {
+   "rate": {
+    "num": 120000,
+    "den": 1001
+   },
+   "drop_frame": true,
+   "label": "00:00:59;119",
+   "frames": 7199,
+   "seconds": {
+    "num": 7206199,
+    "den": 120000
+   },
+   "note": "ST 12-3: 120 DF = 30 DF x 4, 8 labels dropped per minute; not cross-checked against a second implementation"
+  },
+  {
+   "rate": {
+    "num": 120000,
+    "den": 1001
+   },
+   "drop_frame": true,
+   "label": "00:01:00;08",
+   "frames": 7200,
+   "seconds": {
+    "num": 3003,
+    "den": 50
+   },
+   "note": "ST 12-3: 120 DF = 30 DF x 4, 8 labels dropped per minute; not cross-checked against a second implementation"
+  },
+  {
+   "rate": {
+    "num": 120000,
+    "den": 1001
+   },
+   "drop_frame": true,
+   "label": "00:10:00;00",
+   "frames": 71928,
+   "seconds": {
+    "num": 2999997,
+    "den": 5000
+   },
+   "note": "ST 12-3: 120 DF = 30 DF x 4, 8 labels dropped per minute; not cross-checked against a second implementation"
+  }
+ ],
+ "sequence_29_97_DF_across_first_minute": [
+  {
+   "frames": 1798,
+   "label": "00:00:59;28"
+  },
+  {
+   "frames": 1799,
+   "label": "00:00:59;29"
+  },
+  {
+   "frames": 1800,
+   "label": "00:01:00;02"
+  },
+  {
+   "frames": 1801,
+   "label": "00:01:00;03"
+  },
+  {
+   "frames": 1802,
+   "label": "00:01:00;04"
+  },
+  {
+   "frames": 1803,
+   "label": "00:01:00;05"
+  }
+ ],
+ "labels": [
+  {
+   "rate": {
+    "num": 30000,
+    "den": 1001
+   },
+   "drop_frame": true,
+   "label": "00:01:00;00",
+   "error": "dropped label does not exist"
+  },
+  {
+   "rate": {
+    "num": 30000,
+    "den": 1001
+   },
+   "drop_frame": true,
+   "label": "00:01:00;01",
+   "error": "dropped label does not exist"
+  },
+  {
+   "rate": {
+    "num": 30000,
+    "den": 1001
+   },
+   "drop_frame": true,
+   "label": "00:10:00;00",
+   "valid": true,
+   "note": "tenth minute: nothing dropped"
+  },
+  {
+   "rate": {
+    "num": 60000,
+    "den": 1001
+   },
+   "drop_frame": true,
+   "label": "00:01:00;03",
+   "error": "dropped label does not exist"
+  },
+  {
+   "rate": {
+    "num": 24000,
+    "den": 1001
+   },
+   "drop_frame": false,
+   "label": "00:00:00:24",
+   "error": "frame field out of range (0-23)"
+  },
+  {
+   "rate": {
+    "num": 24000,
+    "den": 1001
+   },
+   "drop_frame": false,
+   "label": "00:60:00:00",
+   "error": "not a clock time"
+  },
+  {
+   "rate": {
+    "num": 1000,
+    "den": 1
+   },
+   "drop_frame": false,
+   "label": "00:00:01:00",
+   "error": "no timecode semantics at this rate"
+  }
+ ]
+}

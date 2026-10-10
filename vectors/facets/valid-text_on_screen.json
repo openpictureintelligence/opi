@@ -1,0 +1,19 @@
+{
+  "facet": "text_on_screen",
+  "entry": {
+    "span": {
+      "frame_in": 0,
+      "frame_out": 72
+    },
+    "text": "42B  A  3",
+    "kind": "slate",
+    "language": "en",
+    "bbox": [
+      0.2,
+      0.3,
+      0.6,
+      0.4
+    ],
+    "confidence": 0.9
+  }
+}

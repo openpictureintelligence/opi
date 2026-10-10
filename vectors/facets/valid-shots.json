@@ -1,0 +1,25 @@
+{
+  "facet": "shots",
+  "entry": [
+    {
+      "idx": 0,
+      "span": {
+        "frame_in": 0,
+        "frame_out": 101,
+        "t_start_s": 0.0,
+        "t_end_s": 4.2
+      },
+      "confidence": null
+    },
+    {
+      "idx": 1,
+      "span": {
+        "frame_in": 101,
+        "frame_out": 240,
+        "t_start_s": 4.2,
+        "t_end_s": 10.0
+      },
+      "confidence": 0.8
+    }
+  ]
+}

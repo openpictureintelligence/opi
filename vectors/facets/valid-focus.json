@@ -1,0 +1,13 @@
+{
+  "facet": "focus",
+  "entry": {
+    "span": {
+      "frame_in": 0,
+      "frame_out": 101
+    },
+    "sharpness": 0.71,
+    "in_focus": true,
+    "shallow_dof": true,
+    "confidence": 0.8
+  }
+}

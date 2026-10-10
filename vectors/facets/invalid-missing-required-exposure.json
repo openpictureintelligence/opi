@@ -1,0 +1,11 @@
+{
+  "facet": "exposure_color",
+  "entry": {
+    "span": {
+      "frame_in": 0,
+      "frame_out": 10
+    },
+    "mean_ire": 40.0
+  },
+  "expect_failure_in": "required"
+}

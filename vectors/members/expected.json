@@ -1,0 +1,53 @@
+{
+  "cases": {
+    "case-bad-name.opi": {
+      "must_fail": "names.valid",
+      "why": "top-level member other than manifest.json (\u00a74.3)"
+    },
+    "case-case-collision.opi": {
+      "must_fail": "names.case-unique",
+      "why": "two names differing only in ASCII case (\u00a74.2)"
+    },
+    "case-comment-timestamps.opi": {
+      "must_fail": "container.no-comment",
+      "why": "archive comment present (\u00a74.1); timestamps also fail \u00a74.5"
+    },
+    "case-exif-still.opi": {
+      "must_fail": "still.keyframes/s0_0000024.webp",
+      "why": "WebP carries an EXIF chunk; stills must be stripped (\u00a77b.4)"
+    },
+    "case-legacy-embeddings.opi": {
+      "must_fail": "embeddings.embeddings/legacy.safetensors",
+      "why": "no 'vectors' tensor and no opi.* metadata (\u00a77b.3)"
+    },
+    "case-manifest-not-first.opi": {
+      "must_fail": "manifest.first",
+      "why": "manifest.json is not the first local header (\u00a74.3)"
+    },
+    "case-misaligned.opi": {
+      "must_fail": "members.aligned",
+      "why": "safetensors member STORED but data offset not \u2261 0 mod 64 (\u00a74.4)"
+    },
+    "case-two-owners.opi": {
+      "must_fail": "attachments.single-owner",
+      "why": "the same member declared by two runs (\u00a77b.1)"
+    },
+    "case-undeclared.opi": {
+      "must_fail": "attachments.all-declared",
+      "why": "member present in the archive, absent from every run's attachments (\u00a74.7)"
+    },
+    "case-zip64.opi": {
+      "must_fail": "container.no-zip64",
+      "why": "a ZIP64 extra record (0x0001) in a header (\u00a74.6)"
+    }
+  },
+  "valid": {
+    "data_offsets": {
+      "embeddings/unit-test.safetensors": 1152,
+      "extensions/org.example.tool/notes.txt": 1710,
+      "keyframes/s0_0000024.webp": 1599
+    },
+    "file": "valid-full.opi",
+    "sha256": "7c6dea39f97cb9620b050686f7bf5241c093405e9db78589abf94965eb6cb11e"
+  }
+}

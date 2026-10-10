@@ -1,0 +1,14 @@
+{
+  "facet": "clearance",
+  "entry": {
+    "span": {
+      "frame_in": 0,
+      "frame_out": 10
+    },
+    "flag": "minor",
+    "review_required": true,
+    "confidence": 0.6,
+    "accuracy": 0.886
+  },
+  "expect_failure_in": "accuracy claim"
+}

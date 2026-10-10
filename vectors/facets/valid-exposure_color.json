@@ -1,0 +1,22 @@
+{
+  "facet": "exposure_color",
+  "entry": {
+    "span": {
+      "t_start_s": 0.0,
+      "t_end_s": 50.008291666666665,
+      "frame_in": 0,
+      "frame_out": 1199
+    },
+    "mean_ire": 36.2,
+    "clipped_highlight_ratio": 0.0,
+    "crushed_black_ratio": 0.00021,
+    "contrast": 0.1915,
+    "wb_drift": {
+      "r_over_g": 1.0188,
+      "b_over_g": 0.9452
+    },
+    "log_profile_likely": false,
+    "frames_sampled": 4,
+    "coverage": 0.95
+  }
+}

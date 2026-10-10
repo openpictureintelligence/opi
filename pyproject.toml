@@ -1,0 +1,46 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "openpicture"
+dynamic = ["version"]
+description = "Open Picture Intelligence (.opi) — reference implementation of the sidecar format: container, canonicalization, signing, validation."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "Apache-2.0" }
+authors = [{ name = "Lunar Park" }]
+keywords = ["video", "metadata", "sidecar", "post-production", "provenance", "file-format"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Topic :: Multimedia :: Video",
+    "Topic :: File Formats",
+]
+dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/openpictureintelligence/opi"
+Documentation = "https://openpictureintelligence.github.io/opi/"
+Specification = "https://github.com/openpictureintelligence/opi/blob/main/SPEC.md"
+Changelog = "https://github.com/openpictureintelligence/opi/blob/main/CHANGELOG.md"
+Issues = "https://github.com/openpictureintelligence/opi/issues"
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+openpicture = "openpicture.cli:main"
+
+[tool.hatch.version]
+path = "openpicture/__init__.py"
+
+[tool.hatch.build.targets.wheel]
+packages = ["openpicture"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

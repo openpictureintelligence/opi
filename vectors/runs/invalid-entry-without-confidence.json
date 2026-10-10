@@ -1,0 +1,41 @@
+{
+  "manifest": {
+    "opi": 0,
+    "profile": "core",
+    "media_binding": {
+      "files": [
+        {
+          "role": "original",
+          "name": "clip.mov",
+          "size": 3,
+          "sha256": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad"
+        }
+      ]
+    },
+    "machine_intelligence": [
+      {
+        "run_id": "ae376c03119b8fb64601add4403be7d9",
+        "producer": "shots:scenedetect",
+        "model_version": "scenedetect-0.7",
+        "generated_at": "2026-08-29T20:00:00Z",
+        "facets": {
+          "shots": [
+            {
+              "idx": 0,
+              "span": {
+                "frame_in": 0,
+                "frame_out": 48
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "editorial_annotations": {}
+  },
+  "expect": {
+    "failing": [
+      "run[0] facet shots"
+    ]
+  }
+}

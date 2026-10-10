@@ -1,0 +1,19 @@
+{
+  "facet": "persons",
+  "entry": {
+    "span": {
+      "frame_in": 0,
+      "frame_out": 1199
+    },
+    "cluster": "p_03",
+    "modality": "both",
+    "speaker": "SPEAKER_00",
+    "bbox": [
+      0.3,
+      0.1,
+      0.3,
+      0.8
+    ],
+    "confidence": 0.7
+  }
+}

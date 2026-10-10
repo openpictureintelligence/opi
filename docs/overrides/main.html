@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{#- Body classes let pages opt into layout variants without templates:
+    the homepage (full-width hero) and wide reference pages. -#}
+{% block extrahead %}
+  {{ super() }}
+  {% if page and page.meta and page.meta.body_class %}
+    <script>document.documentElement.classList.add("{{ page.meta.body_class }}");</script>
+  {% endif %}
+{% endblock %}

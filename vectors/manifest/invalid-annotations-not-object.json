@@ -1,0 +1,112 @@
+{
+  "title": "editorial_annotations must be an object",
+  "spec": "§8.1",
+  "manifest": {
+    "opi": 0,
+    "profile": "core",
+    "generator": "openpicture vectors 0",
+    "generated_at": "2026-08-29T20:00:00Z",
+    "$schema": "https://openpictureintelligence.org/schema/opi-0.schema.json",
+    "media_binding": {
+      "asset_id": "01a04db6-481c-7255-a87e-b426e1f2c130",
+      "duration_s": 6.006,
+      "duration_frames": 144,
+      "shot_at": "2026-08-27T09:15:00-07:00",
+      "camera": "ALEXA35",
+      "ingested_at": "2026-08-29T13:29:46+00:00",
+      "timecode": {
+        "start": "01:00:00:00",
+        "recorded": "01:00:00:00",
+        "rate": {
+          "num": 24000,
+          "den": 1001
+        },
+        "drop_frame": false,
+        "label": "23.976"
+      },
+      "files": [
+        {
+          "role": "original",
+          "name": "clip.mov",
+          "path": "clip.mov",
+          "size": 3,
+          "sha256": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad",
+          "xxh64be": "44bc2cf5ad770999",
+          "container": "mov,mp4,m4a,3gp,3g2,mj2",
+          "video_codec": "prores",
+          "audio_codec": "pcm_s24le",
+          "width": 3840,
+          "height": 2160,
+          "fps": 23.976
+        },
+        {
+          "role": "proxy",
+          "name": "clip_proxy.mov",
+          "size": 5,
+          "sha256": "fcde2b2edba56bf408601fb721fe9b5c338d10ee429ea04fac5fd1d8b1e5c22b",
+          "video_codec": "h264",
+          "audio_codec": "aac",
+          "width": 1920,
+          "height": 1080,
+          "fps": 23.976
+        },
+        {
+          "role": "audio",
+          "name": "clip.wav",
+          "size": 5,
+          "sha256": "fcde2b2edba56bf408601fb721fe9b5c338d10ee429ea04fac5fd1d8b1e5c22b",
+          "video_codec": null,
+          "audio_codec": "pcm_s24le",
+          "width": null,
+          "height": null,
+          "fps": null
+        }
+      ],
+      "provenance": [
+        {
+          "session_id": "01a04db6-479a-7e7e-adae-b6b2fe13357e",
+          "original_path": "A001/clip.mov",
+          "source_label": "A001",
+          "checksum_verified_at": "2026-08-29T13:29:46Z",
+          "note": null
+        }
+      ]
+    },
+    "machine_intelligence": [
+      {
+        "run_id": "ae376c03119b8fb64601add4403be7d9",
+        "producer": "shots:scenedetect",
+        "model_version": "scenedetect-0.7",
+        "facets": {
+          "shots": [
+            {
+              "idx": 0,
+              "confidence": null,
+              "span": {
+                "frame_in": 0,
+                "frame_out": 144,
+                "t_start_s": 0.0,
+                "t_end_s": 6.006,
+                "tc_in": "01:00:00:00",
+                "tc_out": "01:00:06:00",
+                "frames": 144
+              }
+            }
+          ]
+        },
+        "generator": "openpicture vectors 0",
+        "generated_at": "2026-08-29T19:00:00Z",
+        "egress": "none",
+        "confidence_scale": "unit"
+      }
+    ],
+    "editorial_annotations": [
+      "hero"
+    ]
+  },
+  "expect": {
+    "schema": "invalid",
+    "validator": "invalid",
+    "check": "editorial_annotations"
+  }
+}

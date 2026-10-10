@@ -1,0 +1,4 @@
+# Documentation site only — not a dependency of the openpicture package.
+mkdocs==1.6.1
+mkdocs-material==9.6.14
+pymdown-extensions==10.21.3

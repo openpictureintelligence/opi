@@ -1,0 +1,11 @@
+{
+  "facet": "shot_size",
+  "entry": {
+    "span": {
+      "frame_in": 0,
+      "frame_out": 10
+    },
+    "value": "CU"
+  },
+  "expect_failure_in": "confidence"
+}

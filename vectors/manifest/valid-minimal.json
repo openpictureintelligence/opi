@@ -1,0 +1,21 @@
+{
+  "title": "Smallest valid manifest: version, profile, one original file",
+  "spec": "§5.1, §6.3",
+  "manifest": {
+    "opi": 0,
+    "profile": "core",
+    "media_binding": {
+      "files": [
+        {
+          "name": "clip.mov",
+          "sha256": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad"
+        }
+      ]
+    }
+  },
+  "expect": {
+    "schema": "valid",
+    "validator": "valid",
+    "check": null
+  }
+}

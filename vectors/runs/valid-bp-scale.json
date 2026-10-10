@@ -1,0 +1,51 @@
+{
+  "manifest": {
+    "opi": 0,
+    "profile": "core",
+    "media_binding": {
+      "timecode": {
+        "start": "00:00:00:00",
+        "rate": {
+          "num": 24000,
+          "den": 1001
+        },
+        "drop_frame": false
+      },
+      "files": [
+        {
+          "role": "original",
+          "name": "clip.mov",
+          "size": 3,
+          "sha256": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad"
+        }
+      ]
+    },
+    "machine_intelligence": [
+      {
+        "run_id": "b774ea06084c48558c42000067f4e7d2",
+        "producer": "facet:exposure_color",
+        "model_version": "histogram-1.0",
+        "generated_at": "2026-08-29T20:00:00Z",
+        "confidence_scale": "bp",
+        "facets": {
+          "exposure_color": [
+            {
+              "mean_ire": 36,
+              "clipped_highlight_ratio": 0.01,
+              "crushed_black_ratio": 0.02,
+              "contrast": 1.1,
+              "wb_drift": 0.1,
+              "log_profile_likely": false,
+              "frames_sampled": 144,
+              "confidence": 9500
+            }
+          ]
+        }
+      }
+    ],
+    "editorial_annotations": {}
+  },
+  "expect": {
+    "all_ok": true
+  }
+}

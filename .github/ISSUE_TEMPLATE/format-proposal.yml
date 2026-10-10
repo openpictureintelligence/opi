@@ -1,0 +1,38 @@
+name: Format or facet proposal
+description: Propose a concrete change to the OPI format or shared facet vocabulary.
+title: "[proposal] "
+labels:
+  - proposal
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Format changes should be concrete enough to validate. See the contribution rules and specification proposal guide before opening this issue.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What real file, producer, or consumer cannot do something today?
+    validations:
+      required: true
+  - type: textarea
+    id: rule
+    attributes:
+      label: Proposed rule
+      description: Write the proposed MUST, SHOULD, or MAY rule in specification language.
+    validations:
+      required: true
+  - type: textarea
+    id: validation
+    attributes:
+      label: Validator and test impact
+      description: What should a conforming validator check? Include a test vector shape if bytes are involved.
+    validations:
+      required: true
+  - type: textarea
+    id: compatibility
+    attributes:
+      label: Compatibility and adoption
+      description: Explain whether this is additive or incompatible and how existing readers and writers behave.
+    validations:
+      required: true

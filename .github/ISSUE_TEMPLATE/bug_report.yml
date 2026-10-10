@@ -1,0 +1,45 @@
+name: Bug report
+description: Report a reproducible problem in the reference implementation, validator, or documentation.
+title: "[bug] "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please search existing issues first. Do not include private media, credentials, producer keys, or sensitive personal data.
+  - type: textarea
+    id: problem
+    attributes:
+      label: What happened?
+      description: Describe the observed behavior and the command or API call that produced it.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect?
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Minimal reproduction
+      description: Include a sanitized manifest, test vector, or short command sequence when possible.
+      render: text
+  - type: input
+    id: version
+    attributes:
+      label: OPI or openpicture version
+      placeholder: "format 0 / openpicture 0.0.x / commit"
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      placeholder: "OS and Python version"
+  - type: textarea
+    id: validation
+    attributes:
+      label: Validation already run
+      description: List relevant test, validator, or docs-build results.
+      render: text

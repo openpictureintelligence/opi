@@ -1,0 +1,111 @@
+{
+  "secret_key_hex": "9d61b19deffd5a60ba844af492ec2cc44449c5697b326919703bac031cae7f60",
+  "before": {
+    "opi": 0,
+    "profile": "core",
+    "media_binding": {
+      "timecode": {
+        "start": "00:00:00:00",
+        "rate": {
+          "num": 24000,
+          "den": 1001
+        },
+        "drop_frame": false
+      },
+      "files": [
+        {
+          "role": "original",
+          "name": "clip.mov",
+          "size": 3,
+          "sha256": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad"
+        }
+      ]
+    },
+    "machine_intelligence": [
+      {
+        "run_id": "ae376c03119b8fb64601add4403be7d9",
+        "producer": "shots:scenedetect",
+        "model_version": "scenedetect-0.7",
+        "generated_at": "2026-08-29T20:00:00Z",
+        "facets": {
+          "shots": [
+            {
+              "idx": 0,
+              "confidence": 0.9,
+              "span": {
+                "frame_in": 0,
+                "frame_out": 48
+              }
+            }
+          ]
+        },
+        "signature": {
+          "role": "machine_producer",
+          "signer": "urn:example:producer",
+          "algorithm": "Ed25519",
+          "public_key": "d75a980182b10ab7d54bfed3c964073a0ee172f3daa62325af021a68f707511a",
+          "signed_at": "2026-08-29T20:00:01Z",
+          "signature": "ypF+nB8HWsc+yP2t46UnzrrPtPSWDBKEMw5t4HSRlzUdl7w5zRjWMQ7qKHbYMavLUJ1woRRMsy22tyKOD2lpCQ=="
+        }
+      }
+    ],
+    "editorial_annotations": {}
+  },
+  "after": {
+    "opi": 0,
+    "profile": "core",
+    "media_binding": {
+      "timecode": {
+        "start": "00:00:00:00",
+        "rate": {
+          "num": 24000,
+          "den": 1001
+        },
+        "drop_frame": false
+      },
+      "files": [
+        {
+          "role": "original",
+          "name": "clip.mov",
+          "size": 3,
+          "sha256": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad"
+        }
+      ]
+    },
+    "machine_intelligence": [
+      {
+        "run_id": "ae376c03119b8fb64601add4403be7d9",
+        "producer": "shots:scenedetect",
+        "model_version": "scenedetect-0.7",
+        "generated_at": "2026-08-30T09:00:00Z",
+        "facets": {
+          "shots": [
+            {
+              "idx": 0,
+              "confidence": 0.95,
+              "span": {
+                "frame_in": 0,
+                "frame_out": 48
+              }
+            }
+          ]
+        },
+        "signature": {
+          "role": "machine_producer",
+          "signer": "urn:example:producer",
+          "algorithm": "Ed25519",
+          "public_key": "d75a980182b10ab7d54bfed3c964073a0ee172f3daa62325af021a68f707511a",
+          "signed_at": "2026-08-30T09:00:01Z",
+          "signature": "sjM27hWwFfwjiDEvU57Z4FnLLnCsUsr8MsfpFNT2Te9aQWEP4jgl1r9BloTdIQLz093mEyv6TafUtswzLzTaAg=="
+        }
+      }
+    ],
+    "editorial_annotations": {}
+  },
+  "expect": {
+    "same_run_id": true,
+    "before_status": "signed",
+    "after_status": "signed",
+    "before_signature_invalid_on_after": true
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "facet": "audio_usability",
+  "entry": {
+    "span": {
+      "t_start_s": 0.0,
+      "t_end_s": 50.008291666666665,
+      "frame_in": 0,
+      "frame_out": 1199
+    },
+    "rms_dbfs": -32.2,
+    "noise_floor_dbfs": -55.58,
+    "speech_ratio": 0.588,
+    "clipping_ratio": 0.0,
+    "snr_db_est": 21.32,
+    "intelligibility_proxy": 0.653,
+    "dominant": "speech",
+    "frames": 1666,
+    "confidence": 0.8
+  }
+}

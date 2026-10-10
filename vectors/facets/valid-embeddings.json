@@ -1,0 +1,17 @@
+{
+  "facet": "embeddings",
+  "entry": {
+    "member": "embeddings/emb-visual-hash-256-v1.safetensors",
+    "model": "hash-256-v1",
+    "dim": 256,
+    "dtype": "F16",
+    "per": "shot",
+    "normalized": true,
+    "rows": [
+      {
+        "row": 0,
+        "shot_idx": 0
+      }
+    ]
+  }
+}

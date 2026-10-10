@@ -1,0 +1,281 @@
+{
+ "description": "Round-trip formatting of a frame position. FCPXML, EDL (ST 12 counting) and xmeml are lossless; OTIO stores the rate as a double and is lossy \u2014 importers MUST snap the double to the nearest legal rational and round() value.",
+ "cases": [
+  {
+   "rate": {
+    "num": 24000,
+    "den": 1001
+   },
+   "drop_frame": false,
+   "start": "01:00:00:00",
+   "frames": 0,
+   "fcpxml_time": "0s",
+   "fcpxml_frameDuration": "1001/24000s",
+   "otio": {
+    "OTIO_SCHEMA": "RationalTime.1",
+    "rate": 23.976023976023978,
+    "value": 0
+   },
+   "edl_fcm": "NON-DROP FRAME",
+   "edl_source_tc": "01:00:00:00",
+   "xmeml": {
+    "timebase": 24,
+    "ntsc": true,
+    "frames": 0
+   }
+  },
+  {
+   "rate": {
+    "num": 24000,
+    "den": 1001
+   },
+   "drop_frame": false,
+   "start": "01:00:00:00",
+   "frames": 101,
+   "fcpxml_time": "101101/24000s",
+   "fcpxml_frameDuration": "1001/24000s",
+   "otio": {
+    "OTIO_SCHEMA": "RationalTime.1",
+    "rate": 23.976023976023978,
+    "value": 101
+   },
+   "edl_fcm": "NON-DROP FRAME",
+   "edl_source_tc": "01:00:04:05",
+   "xmeml": {
+    "timebase": 24,
+    "ntsc": true,
+    "frames": 101
+   }
+  },
+  {
+   "rate": {
+    "num": 24000,
+    "den": 1001
+   },
+   "drop_frame": false,
+   "start": "01:00:00:00",
+   "frames": 86400,
+   "fcpxml_time": "18018/5s",
+   "fcpxml_frameDuration": "1001/24000s",
+   "otio": {
+    "OTIO_SCHEMA": "RationalTime.1",
+    "rate": 23.976023976023978,
+    "value": 86400
+   },
+   "edl_fcm": "NON-DROP FRAME",
+   "edl_source_tc": "02:00:00:00",
+   "xmeml": {
+    "timebase": 24,
+    "ntsc": true,
+    "frames": 86400
+   }
+  },
+  {
+   "rate": {
+    "num": 24000,
+    "den": 1001
+   },
+   "drop_frame": false,
+   "start": "01:00:00:00",
+   "frames": 143999,
+   "fcpxml_time": "144142999/24000s",
+   "fcpxml_frameDuration": "1001/24000s",
+   "otio": {
+    "OTIO_SCHEMA": "RationalTime.1",
+    "rate": 23.976023976023978,
+    "value": 143999
+   },
+   "edl_fcm": "NON-DROP FRAME",
+   "edl_source_tc": "02:39:59:23",
+   "xmeml": {
+    "timebase": 24,
+    "ntsc": true,
+    "frames": 143999
+   }
+  },
+  {
+   "rate": {
+    "num": 30000,
+    "den": 1001
+   },
+   "drop_frame": true,
+   "start": "00:59:00;02",
+   "frames": 0,
+   "fcpxml_time": "0s",
+   "fcpxml_frameDuration": "1001/30000s",
+   "otio": {
+    "OTIO_SCHEMA": "RationalTime.1",
+    "rate": 29.97002997002997,
+    "value": 0
+   },
+   "edl_fcm": "DROP FRAME",
+   "edl_source_tc": "00:59:00;02",
+   "xmeml": {
+    "timebase": 30,
+    "ntsc": true,
+    "frames": 0
+   }
+  },
+  {
+   "rate": {
+    "num": 30000,
+    "den": 1001
+   },
+   "drop_frame": true,
+   "start": "00:59:00;02",
+   "frames": 101,
+   "fcpxml_time": "101101/30000s",
+   "fcpxml_frameDuration": "1001/30000s",
+   "otio": {
+    "OTIO_SCHEMA": "RationalTime.1",
+    "rate": 29.97002997002997,
+    "value": 101
+   },
+   "edl_fcm": "DROP FRAME",
+   "edl_source_tc": "00:59:03;13",
+   "xmeml": {
+    "timebase": 30,
+    "ntsc": true,
+    "frames": 101
+   }
+  },
+  {
+   "rate": {
+    "num": 30000,
+    "den": 1001
+   },
+   "drop_frame": true,
+   "start": "00:59:00;02",
+   "frames": 86400,
+   "fcpxml_time": "72072/25s",
+   "fcpxml_frameDuration": "1001/30000s",
+   "otio": {
+    "OTIO_SCHEMA": "RationalTime.1",
+    "rate": 29.97002997002997,
+    "value": 86400
+   },
+   "edl_fcm": "DROP FRAME",
+   "edl_source_tc": "01:47:02;28",
+   "xmeml": {
+    "timebase": 30,
+    "ntsc": true,
+    "frames": 86400
+   }
+  },
+  {
+   "rate": {
+    "num": 30000,
+    "den": 1001
+   },
+   "drop_frame": true,
+   "start": "00:59:00;02",
+   "frames": 143999,
+   "fcpxml_time": "144142999/30000s",
+   "fcpxml_frameDuration": "1001/30000s",
+   "otio": {
+    "OTIO_SCHEMA": "RationalTime.1",
+    "rate": 29.97002997002997,
+    "value": 143999
+   },
+   "edl_fcm": "DROP FRAME",
+   "edl_source_tc": "02:19:04;25",
+   "xmeml": {
+    "timebase": 30,
+    "ntsc": true,
+    "frames": 143999
+   }
+  },
+  {
+   "rate": {
+    "num": 25,
+    "den": 1
+   },
+   "drop_frame": false,
+   "start": "10:00:00:00",
+   "frames": 0,
+   "fcpxml_time": "0s",
+   "fcpxml_frameDuration": "1/25s",
+   "otio": {
+    "OTIO_SCHEMA": "RationalTime.1",
+    "rate": 25.0,
+    "value": 0
+   },
+   "edl_fcm": "NON-DROP FRAME",
+   "edl_source_tc": "10:00:00:00",
+   "xmeml": {
+    "timebase": 25,
+    "ntsc": false,
+    "frames": 0
+   }
+  },
+  {
+   "rate": {
+    "num": 25,
+    "den": 1
+   },
+   "drop_frame": false,
+   "start": "10:00:00:00",
+   "frames": 101,
+   "fcpxml_time": "101/25s",
+   "fcpxml_frameDuration": "1/25s",
+   "otio": {
+    "OTIO_SCHEMA": "RationalTime.1",
+    "rate": 25.0,
+    "value": 101
+   },
+   "edl_fcm": "NON-DROP FRAME",
+   "edl_source_tc": "10:00:04:01",
+   "xmeml": {
+    "timebase": 25,
+    "ntsc": false,
+    "frames": 101
+   }
+  },
+  {
+   "rate": {
+    "num": 25,
+    "den": 1
+   },
+   "drop_frame": false,
+   "start": "10:00:00:00",
+   "frames": 86400,
+   "fcpxml_time": "3456s",
+   "fcpxml_frameDuration": "1/25s",
+   "otio": {
+    "OTIO_SCHEMA": "RationalTime.1",
+    "rate": 25.0,
+    "value": 86400
+   },
+   "edl_fcm": "NON-DROP FRAME",
+   "edl_source_tc": "10:57:36:00",
+   "xmeml": {
+    "timebase": 25,
+    "ntsc": false,
+    "frames": 86400
+   }
+  },
+  {
+   "rate": {
+    "num": 25,
+    "den": 1
+   },
+   "drop_frame": false,
+   "start": "10:00:00:00",
+   "frames": 143999,
+   "fcpxml_time": "143999/25s",
+   "fcpxml_frameDuration": "1/25s",
+   "otio": {
+    "OTIO_SCHEMA": "RationalTime.1",
+    "rate": 25.0,
+    "value": 143999
+   },
+   "edl_fcm": "NON-DROP FRAME",
+   "edl_source_tc": "11:35:59:24",
+   "xmeml": {
+    "timebase": 25,
+    "ntsc": false,
+    "frames": 143999
+   }
+  }
+ ]
+}

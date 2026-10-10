@@ -1,0 +1,15 @@
+{
+  "facet": "continuity",
+  "entry": {
+    "span": {
+      "frame_in": 0,
+      "frame_out": 101
+    },
+    "screen_direction": "screen_right",
+    "eyeline_yaw_deg": 32.0,
+    "eyeline_pitch_deg": -4.0,
+    "staging_position": "left",
+    "time_of_day": "interior",
+    "confidence": 0.6
+  }
+}

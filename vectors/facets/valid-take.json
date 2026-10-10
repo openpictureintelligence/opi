@@ -1,0 +1,22 @@
+{
+  "facet": "take",
+  "entry": {
+    "span": {
+      "frame_in": 0,
+      "frame_out": 1199
+    },
+    "scene": "42B",
+    "shot": "A",
+    "take": "3",
+    "roll": "A014",
+    "slate_text": "42B A 3 A014",
+    "slate_span": {
+      "frame_in": 0,
+      "frame_out": 72
+    },
+    "clap_frame": 58,
+    "setup_cluster": "setup_014",
+    "circle_take": false,
+    "confidence": 0.7
+  }
+}

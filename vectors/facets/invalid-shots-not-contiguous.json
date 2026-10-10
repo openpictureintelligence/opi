@@ -1,0 +1,20 @@
+{
+  "facet": "shots",
+  "entry": [
+    {
+      "idx": 0,
+      "span": {
+        "frame_in": 0,
+        "frame_out": 100
+      }
+    },
+    {
+      "idx": 1,
+      "span": {
+        "frame_in": 120,
+        "frame_out": 200
+      }
+    }
+  ],
+  "expect_failure_in": "contiguity"
+}

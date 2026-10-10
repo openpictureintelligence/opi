@@ -1,0 +1,262 @@
+{
+ "description": "What a conforming validator MUST report for a facet 'span' given the media rate and start timecode. 'errors' text is informative; 'valid' is normative.",
+ "cases": [
+  {
+   "rate": {
+    "num": 24000,
+    "den": 1001
+   },
+   "drop_frame": false,
+   "start": "01:00:00:00",
+   "span": {
+    "frame_in": 0,
+    "frame_out": 101
+   },
+   "valid": true,
+   "note": "frames alone are sufficient"
+  },
+  {
+   "rate": {
+    "num": 24000,
+    "den": 1001
+   },
+   "drop_frame": false,
+   "start": "01:00:00:00",
+   "span": {
+    "frame_in": 0,
+    "frame_out": 101,
+    "frames": 101
+   },
+   "valid": true,
+   "note": "frames field equals length"
+  },
+  {
+   "rate": {
+    "num": 24000,
+    "den": 1001
+   },
+   "drop_frame": false,
+   "start": "01:00:00:00",
+   "span": {
+    "frame_in": 0,
+    "frame_out": 101,
+    "frames": 100
+   },
+   "valid": false,
+   "note": "frames field disagrees",
+   "errors": [
+    "frames 100 != frame_out - frame_in (101)"
+   ]
+  },
+  {
+   "rate": {
+    "num": 24000,
+    "den": 1001
+   },
+   "drop_frame": false,
+   "start": "01:00:00:00",
+   "span": {
+    "frame_in": 0,
+    "frame_out": 101,
+    "t_start_s": 0.0,
+    "t_end_s": 4.2
+   },
+   "valid": true,
+   "note": "seconds within half a frame of the frames"
+  },
+  {
+   "rate": {
+    "num": 24000,
+    "den": 1001
+   },
+   "drop_frame": false,
+   "start": "01:00:00:00",
+   "span": {
+    "frame_in": 0,
+    "frame_out": 101,
+    "t_start_s": 0.05,
+    "t_end_s": 4.2
+   },
+   "valid": false,
+   "note": "t_start_s more than half a frame from frame_in",
+   "errors": [
+    "t_start_s 0.05 does not name frame_in 0 at 23.976 (>\u00bd frame apart)"
+   ]
+  },
+  {
+   "rate": {
+    "num": 24000,
+    "den": 1001
+   },
+   "drop_frame": false,
+   "start": "01:00:00:00",
+   "span": {
+    "frame_in": 0,
+    "frame_out": 101,
+    "tc_in": "01:00:00:00",
+    "tc_out": "01:00:04:05"
+   },
+   "valid": true,
+   "note": "timecode renders from start + frames"
+  },
+  {
+   "rate": {
+    "num": 24000,
+    "den": 1001
+   },
+   "drop_frame": false,
+   "start": "01:00:00:00",
+   "span": {
+    "frame_in": 0,
+    "frame_out": 101,
+    "tc_in": "01:00:00:01"
+   },
+   "valid": false,
+   "note": "tc_in off by one frame",
+   "errors": [
+    "tc_in 01:00:00:01 is frame 1 from start, span says 0"
+   ]
+  },
+  {
+   "rate": {
+    "num": 24000,
+    "den": 1001
+   },
+   "drop_frame": false,
+   "start": "01:00:00:00",
+   "span": {
+    "frame_in": 5,
+    "frame_out": 5
+   },
+   "valid": false,
+   "note": "zero-length span",
+   "errors": [
+    "frame_out 5 must exceed frame_in 5 (half-open, at least one frame)"
+   ]
+  },
+  {
+   "rate": {
+    "num": 24000,
+    "den": 1001
+   },
+   "drop_frame": false,
+   "start": "01:00:00:00",
+   "span": {
+    "frame_in": -1,
+    "frame_out": 5
+   },
+   "valid": false,
+   "note": "negative frame_in",
+   "errors": [
+    "frame_in -1 is negative"
+   ]
+  },
+  {
+   "rate": {
+    "num": 24000,
+    "den": 1001
+   },
+   "drop_frame": false,
+   "start": "01:00:00:00",
+   "span": {
+    "frame_in": 0.0,
+    "frame_out": 5
+   },
+   "valid": false,
+   "note": "frames must be integers",
+   "errors": [
+    "frame_in and frame_out must both be integers"
+   ]
+  },
+  {
+   "rate": {
+    "num": 24000,
+    "den": 1001
+   },
+   "drop_frame": false,
+   "start": "01:00:00:00",
+   "span": {
+    "t_start_s": 1.0,
+    "t_end_s": 2.5
+   },
+   "valid": true,
+   "note": "seconds-only span is allowed even with a rate (frames preferred)"
+  },
+  {
+   "rate": {
+    "num": 24000,
+    "den": 1001
+   },
+   "drop_frame": false,
+   "start": "01:00:00:00",
+   "span": {
+    "t_start_s": 1.0,
+    "t_end_s": 2.5,
+    "tc_in": "01:00:01:00"
+   },
+   "valid": false,
+   "note": "timecode without frames",
+   "errors": [
+    "tc_in/tc_out without frame_in/frame_out: frames are the position, timecode is derived"
+   ]
+  },
+  {
+   "rate": {
+    "num": 24000,
+    "den": 1001
+   },
+   "drop_frame": false,
+   "start": "01:00:00:00",
+   "span": {},
+   "valid": false,
+   "note": "no position at all",
+   "errors": [
+    "span has no position at all"
+   ]
+  },
+  {
+   "rate": null,
+   "drop_frame": null,
+   "start": null,
+   "span": {
+    "t_start_s": 1.0,
+    "t_end_s": 2.5
+   },
+   "valid": true,
+   "note": "no rate: seconds only"
+  },
+  {
+   "rate": null,
+   "drop_frame": null,
+   "start": null,
+   "span": {
+    "frame_in": 0,
+    "frame_out": 10
+   },
+   "valid": false,
+   "note": "no rate: frames not allowed",
+   "errors": [
+    "media has no rate: span may carry seconds only",
+    "span has no position at all"
+   ]
+  },
+  {
+   "rate": {
+    "num": 24000,
+    "den": 1001
+   },
+   "drop_frame": false,
+   "start": null,
+   "span": {
+    "frame_in": 0,
+    "frame_out": 101,
+    "tc_in": "01:00:00:00"
+   },
+   "valid": false,
+   "note": "tc present but start unknown",
+   "errors": [
+    "tc_in/tc_out present but media_binding.timecode has no start"
+   ]
+  }
+ ]
+}

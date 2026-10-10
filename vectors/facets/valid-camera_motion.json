@@ -1,0 +1,28 @@
+{
+  "facet": "camera_motion",
+  "entry": {
+    "span": {
+      "t_start_s": 0.0,
+      "t_end_s": 50.008291666666665,
+      "frame_in": 0,
+      "frame_out": 1199
+    },
+    "verb": "fixed",
+    "verbs": {
+      "fixed": 1.0
+    },
+    "direction": {
+      "pan": null,
+      "tilt": null,
+      "zoom": null
+    },
+    "magnitude": 5e-05,
+    "editorial": [
+      "static"
+    ],
+    "jitter": 8e-05,
+    "parallax": 0.02,
+    "samples": 16,
+    "confidence": 0.75
+  }
+}

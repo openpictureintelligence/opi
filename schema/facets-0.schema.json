@@ -1,0 +1,1285 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://openpictureintelligence.org/schema/facets-0.schema.json",
+  "title": "Open Picture Intelligence — facet vocabulary, version 0 (proposed)",
+  "description": "Shapes for machine_intelligence[].facets.<name>[] entries (SPEC Appendix C). NORMATIVE for the facets B12 froze on 2026-08-29 — audio_usability, camera_motion, energy_curve, exposure_color, shots, transcript, usability — whose names, required keys, units and enums do not change without a major-version bump. Every other facet here is a proposal: producers may emit it, validators ignore it, nobody claims conformance on it. Additive everywhere. Two encodings are permanently equivalent: canonical lists under facets.<name> and row form facets.signals[]{kind: 'facet.<name>', payload: {...}}; readers accept both and neither is deprecated. Camera-motion verbs are MPEG-7's.",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "shots": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/shot"
+      }
+    },
+    "signals": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/signal"
+      }
+    },
+    "exposure_color": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/exposure_color"
+      }
+    },
+    "energy_curve": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/energy_curve"
+      }
+    },
+    "camera_motion": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/camera_motion"
+      }
+    },
+    "audio_usability": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/audio_usability"
+      }
+    },
+    "embeddings": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/embedding_ref"
+      }
+    },
+    "shot_size": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/shot_size"
+      }
+    },
+    "composition": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/composition"
+      }
+    },
+    "focus": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/focus"
+      }
+    },
+    "continuity": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/continuity"
+      }
+    },
+    "take": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/take"
+      }
+    },
+    "clearance": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/clearance"
+      }
+    },
+    "text_on_screen": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/text_on_screen"
+      }
+    },
+    "persons": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/persons"
+      }
+    },
+    "audio_events": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/audio_events"
+      }
+    }
+  },
+  "$defs": {
+    "span": {
+      "description": "A time range (§6a). frame_in/frame_out: integer offsets from the media head at media_binding.timecode.rate, out exclusive. Seconds and timecode strings are derived.",
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "frame_in": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "frame_out": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "t_start_s": {
+          "type": "number",
+          "minimum": 0
+        },
+        "t_end_s": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "tc_in": {
+          "type": "string"
+        },
+        "tc_out": {
+          "type": "string"
+        },
+        "frames": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "confidence": {
+      "description": "Producer confidence in the run's confidence_scale (§7.5): unit float in [0,1] or basis-point integer 0-10000, or null when no confidence was estimated - either the producer did not estimate one, or the value was measured rather than inferred, which has nothing to be unsure about (C.0.1). The key is always present on an entry; presence and scale are enforced by openpicture.runs.checks, not by this schema, which validates facet shape alone. A measured facet carries coverage instead. Never an accuracy claim (SPEC 10.3).",
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10000
+        }
+      ]
+    },
+    "entry": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "span": {
+          "$ref": "#/$defs/span"
+        },
+        "confidence": {
+          "$ref": "#/$defs/confidence"
+        },
+        "coverage": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Fraction of the span actually sampled or measured, 0-1. What a measured facet carries in place of a confidence (C.0.1)."
+        },
+        "shot_idx": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "scope": {
+          "type": "string",
+          "enum": [
+            "shot",
+            "asset"
+          ]
+        },
+        "text": {
+          "type": "string",
+          "description": "F2: the entry's searchable headline value, hoisted onto the canonical entry. The same key a row-form signal already carries (C.0)."
+        }
+      }
+    },
+    "shot": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/entry"
+        }
+      ],
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "idx": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "span": {
+          "$ref": "#/$defs/span"
+        }
+      },
+      "required": [
+        "idx",
+        "span"
+      ]
+    },
+    "signal": {
+      "description": "Row form (C.0): a generic entry. kind is a bare Tier 1 name (transcript, description, usability, …) or facet.<name> with the facet's keys inside payload.",
+      "allOf": [
+        {
+          "$ref": "#/$defs/entry"
+        }
+      ],
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "kind": {
+          "type": "string"
+        },
+        "text": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "payload": {
+          "type": [
+            "object",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "kind"
+      ]
+    },
+    "transcript_payload": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "language": {
+          "type": "string",
+          "description": "BCP-47"
+        },
+        "speaker": {
+          "type": "string"
+        },
+        "words": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "text": {
+                "type": "string"
+              },
+              "t_start_s": {
+                "type": "number"
+              },
+              "t_end_s": {
+                "type": "number"
+              },
+              "confidence": {
+                "$ref": "#/$defs/confidence"
+              }
+            },
+            "required": [
+              "text",
+              "t_start_s",
+              "t_end_s"
+            ]
+          }
+        },
+        "translation": {
+          "type": "object",
+          "properties": {
+            "language": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "usability_payload": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "blur_var": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "mean_luma": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1
+        },
+        "peak_luma": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1
+        },
+        "low_luma_ratio": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1
+        },
+        "audio_rms_dbfs": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "maximum": 0
+        },
+        "frame_count_sampled": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "flags": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "black",
+              "blur",
+              "clipped_audio",
+              "silent"
+            ]
+          }
+        }
+      }
+    },
+    "exposure_color": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/entry"
+        }
+      ],
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "mean_ire": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 109
+        },
+        "clipped_highlight_ratio": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "crushed_black_ratio": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "contrast": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "wb_drift": {
+          "type": "object",
+          "properties": {
+            "r_over_g": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "b_over_g": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            }
+          },
+          "required": [
+            "r_over_g",
+            "b_over_g"
+          ]
+        },
+        "log_profile_likely": {
+          "type": "boolean",
+          "description": "Flat histogram + lifted blacks pattern of a log encode (C.5)."
+        },
+        "log_profile": {
+          "description": "The log encoding, when identifiable (C.5). Enumerated so files compare across producers; a profile outside the list is written x-<vendor>_<profile> rather than as free text. null when not identified.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "enum": [
+                "ARRI_LogC3",
+                "ARRI_LogC4",
+                "Sony_SLog2",
+                "Sony_SLog3",
+                "Panasonic_VLog",
+                "Canon_CLog2",
+                "Canon_CLog3",
+                "Nikon_NLog",
+                "RED_Log3G10",
+                "BMD_BRAWFilm",
+                "Rec709"
+              ]
+            },
+            {
+              "type": "string",
+              "pattern": "^x-[A-Za-z0-9]+_[A-Za-z0-9]+$"
+            }
+          ]
+        },
+        "frames_sampled": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "mean_ire",
+        "clipped_highlight_ratio",
+        "crushed_black_ratio",
+        "contrast",
+        "wb_drift",
+        "log_profile_likely",
+        "frames_sampled"
+      ]
+    },
+    "energy_curve": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/entry"
+        }
+      ],
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "t": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "minimum": 0
+          }
+        },
+        "motion": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "minimum": 0
+          }
+        },
+        "audio": {
+          "type": "array",
+          "items": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "maximum": 0
+          }
+        },
+        "peak_t": {
+          "type": "number",
+          "minimum": 0
+        },
+        "motion_mean": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "audio_mean_dbfs": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "maximum": 0
+        },
+        "samples": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "composite": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          }
+        }
+      },
+      "required": [
+        "t",
+        "motion",
+        "audio",
+        "peak_t",
+        "samples"
+      ]
+    },
+    "camera_motion": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/entry"
+        }
+      ],
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "verb": {
+          "type": "string",
+          "enum": [
+            "fixed",
+            "pan",
+            "tilt",
+            "roll",
+            "zoom",
+            "dolly",
+            "track",
+            "boom",
+            "zoom_or_dolly",
+            "unknown"
+          ],
+          "description": "MPEG-7 CameraMotion verbs plus zoom_or_dolly (parallax inconclusive) and unknown"
+        },
+        "verbs": {
+          "type": "object",
+          "description": "MPEG-7 FractionalPresence per verb",
+          "additionalProperties": false,
+          "properties": {
+            "fixed": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "pan": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "tilt": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "roll": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "zoom": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "dolly": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "track": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "boom": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "zoom_or_dolly": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "unknown": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            }
+          }
+        },
+        "direction": {
+          "type": "object",
+          "properties": {
+            "pan": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "enum": [
+                "left",
+                "right",
+                null
+              ]
+            },
+            "tilt": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "enum": [
+                "up",
+                "down",
+                null
+              ]
+            },
+            "zoom": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "enum": [
+                "in",
+                "out",
+                null
+              ]
+            }
+          }
+        },
+        "magnitude": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "editorial": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "static",
+              "push",
+              "pull",
+              "whip",
+              "drift",
+              "handheld",
+              "locked_off",
+              "reveal"
+            ]
+          }
+        },
+        "jitter": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "parallax": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1
+        },
+        "roll_deg": {
+          "type": "number"
+        },
+        "samples": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "verb",
+        "samples",
+        "confidence"
+      ]
+    },
+    "audio_usability": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/entry"
+        }
+      ],
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "dominant": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "speech",
+            "tonal_or_music",
+            "ambience",
+            "silence",
+            null
+          ]
+        },
+        "rms_dbfs": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "maximum": 0
+        },
+        "noise_floor_dbfs": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "maximum": 0
+        },
+        "speech_ratio": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1
+        },
+        "clipping_ratio": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1
+        },
+        "snr_db_est": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "intelligibility_proxy": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1
+        },
+        "dnsmos_sig": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 5
+        },
+        "dnsmos_bak": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 5
+        },
+        "dnsmos_ovrl": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 5
+        },
+        "wind": {
+          "type": "boolean"
+        },
+        "music_bed": {
+          "type": "boolean"
+        },
+        "room_tone": {
+          "type": "boolean"
+        },
+        "frames": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "dominant",
+        "rms_dbfs",
+        "noise_floor_dbfs",
+        "speech_ratio",
+        "clipping_ratio",
+        "frames"
+      ]
+    },
+    "embedding_ref": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/entry"
+        }
+      ],
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "member": {
+          "type": "string"
+        },
+        "model": {
+          "type": "string"
+        },
+        "dim": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "dtype": {
+          "type": "string",
+          "enum": [
+            "F32",
+            "F16",
+            "BF16",
+            "I8",
+            "U8"
+          ]
+        },
+        "per": {
+          "type": "string",
+          "enum": [
+            "shot",
+            "segment",
+            "asset"
+          ]
+        },
+        "normalized": {
+          "type": "boolean"
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "row": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "shot_idx": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "span": {
+                "$ref": "#/$defs/span"
+              }
+            },
+            "required": [
+              "row"
+            ]
+          }
+        }
+      },
+      "required": [
+        "member"
+      ]
+    },
+    "shot_size": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/entry"
+        }
+      ],
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "value": {
+          "type": "string",
+          "enum": [
+            "ECU",
+            "CU",
+            "MCU",
+            "MS",
+            "MWS",
+            "WS",
+            "EWS"
+          ]
+        },
+        "subject_height_ratio": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "subject": {
+          "type": "string",
+          "enum": [
+            "person",
+            "object",
+            "landscape",
+            "none"
+          ]
+        },
+        "iptc_scene_code": {
+          "type": "string",
+          "enum": [
+            "010100",
+            "010200",
+            "010300",
+            "011000",
+            "011200",
+            "011800"
+          ],
+          "description": "IPTC Scene NewsCode for egress: 011800 close-up, 010100 headshot, 010200 half-length, 010300 full-length, 011000 general view, 011200 aerial view"
+        }
+      },
+      "required": [
+        "value",
+        "confidence"
+      ]
+    },
+    "composition": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/entry"
+        }
+      ],
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "subject_detected": {
+          "type": "boolean"
+        },
+        "headroom": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "leadroom": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "rule_of_thirds": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "symmetry": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "horizon_tilt_deg": {
+          "type": "number"
+        },
+        "subject_position": {
+          "type": "string",
+          "enum": [
+            "left",
+            "center",
+            "right"
+          ]
+        }
+      },
+      "required": [
+        "subject_detected"
+      ]
+    },
+    "focus": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/entry"
+        }
+      ],
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "sharpness": {
+          "type": "number",
+          "minimum": 0
+        },
+        "in_focus": {
+          "type": "boolean"
+        },
+        "shallow_dof": {
+          "type": "boolean"
+        },
+        "focal_feel": {
+          "type": "string",
+          "enum": [
+            "wide",
+            "normal",
+            "long"
+          ]
+        },
+        "anamorphic": {
+          "type": "boolean"
+        },
+        "flare": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "sharpness",
+        "in_focus",
+        "confidence"
+      ]
+    },
+    "continuity": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/entry"
+        }
+      ],
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "screen_direction": {
+          "type": "string",
+          "enum": [
+            "screen_left",
+            "screen_right",
+            "center_facing"
+          ]
+        },
+        "eyeline_yaw_deg": {
+          "type": "number",
+          "minimum": -180,
+          "maximum": 180
+        },
+        "eyeline_pitch_deg": {
+          "type": "number",
+          "minimum": -90,
+          "maximum": 90
+        },
+        "staging_position": {
+          "type": "string",
+          "enum": [
+            "left",
+            "center",
+            "right"
+          ]
+        },
+        "key_light_side": {
+          "type": "string",
+          "enum": [
+            "left",
+            "right",
+            "front",
+            "top",
+            "back"
+          ]
+        },
+        "time_of_day": {
+          "type": "string",
+          "enum": [
+            "day",
+            "night",
+            "dawn_dusk",
+            "interior"
+          ]
+        },
+        "weather": {
+          "type": "string",
+          "enum": [
+            "clear",
+            "overcast",
+            "rain",
+            "snow",
+            "fog"
+          ]
+        },
+        "location_hint": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "confidence"
+      ]
+    },
+    "take": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/entry"
+        }
+      ],
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "scene": {
+          "type": "string"
+        },
+        "shot": {
+          "type": "string"
+        },
+        "take": {
+          "type": "string"
+        },
+        "roll": {
+          "type": "string"
+        },
+        "slate_text": {
+          "type": "string"
+        },
+        "slate_span": {
+          "$ref": "#/$defs/span"
+        },
+        "clap_frame": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "setup_cluster": {
+          "type": "string"
+        },
+        "circle_take": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "confidence"
+      ]
+    },
+    "clearance": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/entry"
+        }
+      ],
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "flag": {
+          "type": "string",
+          "enum": [
+            "logo",
+            "face",
+            "minor",
+            "artwork",
+            "licensed_music",
+            "signage",
+            "text"
+          ]
+        },
+        "review_required": {
+          "const": true,
+          "description": "§10.3: a review flag, never a determination"
+        },
+        "bbox": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "label": {
+          "type": "string"
+        },
+        "note": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "flag",
+        "review_required",
+        "confidence"
+      ],
+      "not": {
+        "anyOf": [
+          {
+            "required": [
+              "accuracy"
+            ]
+          },
+          {
+            "required": [
+              "precision"
+            ]
+          },
+          {
+            "required": [
+              "recall"
+            ]
+          }
+        ]
+      },
+      "description": "Sensitive facet (§10.3). review_required MUST be true; no accuracy/precision/recall keys; absence is not a negative."
+    },
+    "text_on_screen": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/entry"
+        }
+      ],
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "text": {
+          "type": "string"
+        },
+        "bbox": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "language": {
+          "type": "string"
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "caption",
+            "slate",
+            "sign",
+            "screen",
+            "jersey",
+            "other"
+          ]
+        }
+      },
+      "required": [
+        "text",
+        "confidence"
+      ]
+    },
+    "persons": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/entry"
+        }
+      ],
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "cluster": {
+          "type": "string"
+        },
+        "modality": {
+          "type": "string",
+          "enum": [
+            "seen",
+            "heard",
+            "both"
+          ]
+        },
+        "bbox": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "speaker": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "cluster",
+        "confidence"
+      ]
+    },
+    "audio_events": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/entry"
+        }
+      ],
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "event": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "event",
+        "confidence"
+      ]
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "facet": "audio_events",
+  "entry": {
+    "span": {
+      "frame_in": 480,
+      "frame_out": 520
+    },
+    "event": "Applause",
+    "confidence": 0.81
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "title": "A manifest.json over 16 MiB is invalid and must not be parsed",
+  "spec": "§5.6",
+  "synthetic": "Build MAXIMAL, then pad editorial_annotations.notes until manifest_bytes() exceeds 16777216; a validator reports `manifest size` without loading the JSON.",
+  "limit_bytes": 16777216,
+  "expect": {
+    "schema": null,
+    "validator": null,
+    "check": "manifest size"
+  }
+}

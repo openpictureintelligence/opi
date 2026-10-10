@@ -1,0 +1,367 @@
+{
+ "description": "Rate objects: reduction, positivity, drop-frame legality (ST 12-1 \u00a75.2.2, ST 12-3), nominal, label. 'error' means a conforming implementation MUST reject.",
+ "cases": [
+  {
+   "rate": {
+    "num": 24000,
+    "den": 1001
+   },
+   "drop_frame": false,
+   "label": "23.976",
+   "nominal": 24,
+   "dropped_per_minute": 0,
+   "has_timecode": true
+  },
+  {
+   "rate": {
+    "num": 24000,
+    "den": 1001
+   },
+   "drop_frame": true,
+   "error": "drop_frame not defined at this rate"
+  },
+  {
+   "rate": {
+    "num": 24,
+    "den": 1
+   },
+   "drop_frame": false,
+   "label": "24",
+   "nominal": 24,
+   "dropped_per_minute": 0,
+   "has_timecode": true
+  },
+  {
+   "rate": {
+    "num": 24,
+    "den": 1
+   },
+   "drop_frame": true,
+   "error": "drop_frame not defined at this rate"
+  },
+  {
+   "rate": {
+    "num": 25,
+    "den": 1
+   },
+   "drop_frame": false,
+   "label": "25",
+   "nominal": 25,
+   "dropped_per_minute": 0,
+   "has_timecode": true
+  },
+  {
+   "rate": {
+    "num": 25,
+    "den": 1
+   },
+   "drop_frame": true,
+   "error": "drop_frame not defined at this rate"
+  },
+  {
+   "rate": {
+    "num": 30000,
+    "den": 1001
+   },
+   "drop_frame": false,
+   "label": "29.97",
+   "nominal": 30,
+   "dropped_per_minute": 0,
+   "has_timecode": true
+  },
+  {
+   "rate": {
+    "num": 30000,
+    "den": 1001
+   },
+   "drop_frame": true,
+   "label": "29.97DF",
+   "nominal": 30,
+   "dropped_per_minute": 2,
+   "has_timecode": true
+  },
+  {
+   "rate": {
+    "num": 30,
+    "den": 1
+   },
+   "drop_frame": false,
+   "label": "30",
+   "nominal": 30,
+   "dropped_per_minute": 0,
+   "has_timecode": true
+  },
+  {
+   "rate": {
+    "num": 30,
+    "den": 1
+   },
+   "drop_frame": true,
+   "error": "drop_frame not defined at this rate"
+  },
+  {
+   "rate": {
+    "num": 48000,
+    "den": 1001
+   },
+   "drop_frame": false,
+   "label": "47.952",
+   "nominal": 48,
+   "dropped_per_minute": 0,
+   "has_timecode": true
+  },
+  {
+   "rate": {
+    "num": 48000,
+    "den": 1001
+   },
+   "drop_frame": true,
+   "error": "drop_frame not defined at this rate"
+  },
+  {
+   "rate": {
+    "num": 48,
+    "den": 1
+   },
+   "drop_frame": false,
+   "label": "48",
+   "nominal": 48,
+   "dropped_per_minute": 0,
+   "has_timecode": true
+  },
+  {
+   "rate": {
+    "num": 48,
+    "den": 1
+   },
+   "drop_frame": true,
+   "error": "drop_frame not defined at this rate"
+  },
+  {
+   "rate": {
+    "num": 50,
+    "den": 1
+   },
+   "drop_frame": false,
+   "label": "50",
+   "nominal": 50,
+   "dropped_per_minute": 0,
+   "has_timecode": true
+  },
+  {
+   "rate": {
+    "num": 50,
+    "den": 1
+   },
+   "drop_frame": true,
+   "error": "drop_frame not defined at this rate"
+  },
+  {
+   "rate": {
+    "num": 60000,
+    "den": 1001
+   },
+   "drop_frame": false,
+   "label": "59.94",
+   "nominal": 60,
+   "dropped_per_minute": 0,
+   "has_timecode": true
+  },
+  {
+   "rate": {
+    "num": 60000,
+    "den": 1001
+   },
+   "drop_frame": true,
+   "label": "59.94DF",
+   "nominal": 60,
+   "dropped_per_minute": 4,
+   "has_timecode": true
+  },
+  {
+   "rate": {
+    "num": 60,
+    "den": 1
+   },
+   "drop_frame": false,
+   "label": "60",
+   "nominal": 60,
+   "dropped_per_minute": 0,
+   "has_timecode": true
+  },
+  {
+   "rate": {
+    "num": 60,
+    "den": 1
+   },
+   "drop_frame": true,
+   "error": "drop_frame not defined at this rate"
+  },
+  {
+   "rate": {
+    "num": 120000,
+    "den": 1001
+   },
+   "drop_frame": false,
+   "label": "119.88",
+   "nominal": 120,
+   "dropped_per_minute": 0,
+   "has_timecode": true
+  },
+  {
+   "rate": {
+    "num": 120000,
+    "den": 1001
+   },
+   "drop_frame": true,
+   "label": "119.88DF",
+   "nominal": 120,
+   "dropped_per_minute": 8,
+   "has_timecode": true
+  },
+  {
+   "rate": {
+    "num": 120,
+    "den": 1
+   },
+   "drop_frame": false,
+   "label": "120",
+   "nominal": 120,
+   "dropped_per_minute": 0,
+   "has_timecode": true
+  },
+  {
+   "rate": {
+    "num": 120,
+    "den": 1
+   },
+   "drop_frame": true,
+   "error": "drop_frame not defined at this rate"
+  },
+  {
+   "rate": {
+    "num": 1000,
+    "den": 1
+   },
+   "drop_frame": false,
+   "label": "1000",
+   "nominal": 1000,
+   "dropped_per_minute": 0,
+   "has_timecode": false
+  },
+  {
+   "rate": {
+    "num": 48000,
+    "den": 2002
+   },
+   "drop_frame": false,
+   "error": "not reduced"
+  },
+  {
+   "rate": {
+    "num": 0,
+    "den": 1
+   },
+   "drop_frame": false,
+   "error": "not positive"
+  },
+  {
+   "rate": {
+    "num": 24000,
+    "den": 1001
+   },
+   "drop_frame": true,
+   "error": "drop_frame not defined at this rate"
+  }
+ ],
+ "labels": [
+  {
+   "label": "23.976",
+   "rate": {
+    "num": 24000,
+    "den": 1001
+   },
+   "drop_frame": false
+  },
+  {
+   "label": "23.98",
+   "rate": {
+    "num": 24000,
+    "den": 1001
+   },
+   "drop_frame": false
+  },
+  {
+   "label": "24",
+   "rate": {
+    "num": 24,
+    "den": 1
+   },
+   "drop_frame": false
+  },
+  {
+   "label": "25",
+   "rate": {
+    "num": 25,
+    "den": 1
+   },
+   "drop_frame": false
+  },
+  {
+   "label": "29.97",
+   "rate": {
+    "num": 30000,
+    "den": 1001
+   },
+   "drop_frame": false
+  },
+  {
+   "label": "29.97DF",
+   "rate": {
+    "num": 30000,
+    "den": 1001
+   },
+   "drop_frame": true
+  },
+  {
+   "label": "30",
+   "rate": {
+    "num": 30,
+    "den": 1
+   },
+   "drop_frame": false
+  },
+  {
+   "label": "59.94DF",
+   "rate": {
+    "num": 60000,
+    "den": 1001
+   },
+   "drop_frame": true
+  },
+  {
+   "label": "119.88DF",
+   "rate": {
+    "num": 120000,
+    "den": 1001
+   },
+   "drop_frame": true
+  },
+  {
+   "label": "120",
+   "rate": {
+    "num": 120,
+    "den": 1
+   },
+   "drop_frame": false
+  },
+  {
+   "label": "23.976DF",
+   "error": "drop_frame not defined at this rate"
+  },
+  {
+   "label": "27.5",
+   "error": "not a rate with timecode semantics"
+  }
+ ]
+}

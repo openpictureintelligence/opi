@@ -1,0 +1,8 @@
+Open Picture Intelligence (.opi) — reference implementation
+Copyright 2026 Lunar Park
+
+Licensed under the Apache License, Version 2.0. See LICENSE.
+
+This product includes a pure-Python Ed25519 implementation transcribed from
+the reference algorithm in RFC 8032 (IETF Trust, Revised BSD License) and a
+JSON canonicalization implementation of RFC 8785.

@@ -1,0 +1,403 @@
+/* Open Picture Intelligence — site look and feel.
+   A quiet standards document with a warm technical edge: near-black chrome,
+   warm off-white reading surface, one orange accent, whitespace and rules
+   instead of borders. All colors live in the `opi` scheme tokens below;
+   component rules reference tokens, never hard-coded hex values. */
+
+/* ── Palette ─────────────────────────────────────────────────────────── */
+[data-md-color-scheme="opi"] {
+  --opi-black: #111110;
+  --opi-ink: #1c1b19;
+  --opi-paper: #f6f2ea;
+  --opi-paper-2: #efe9dd;
+  --opi-rule: #d9d1c2;
+  --opi-muted: #6b655b;
+  --opi-orange: #d9641a;
+  --opi-orange-ink: #b34f0f;
+  --opi-valid: #2f7d4f;
+  --opi-warn: #b3800f;
+  --opi-invalid: #b3261e;
+
+  --md-primary-fg-color: var(--opi-black);
+  --md-primary-fg-color--light: #2a2926;
+  --md-primary-fg-color--dark: #000000;
+  --md-primary-bg-color: var(--opi-paper);
+  --md-primary-bg-color--light: var(--opi-paper-2);
+
+  --md-accent-fg-color: var(--opi-orange);
+  --md-accent-fg-color--transparent: rgba(217, 100, 26, 0.12);
+  --md-accent-bg-color: var(--opi-paper);
+
+  --md-default-bg-color: var(--opi-paper);
+  --md-default-fg-color: var(--opi-ink);
+  --md-default-fg-color--light: #3f3c37;
+  --md-default-fg-color--lighter: var(--opi-muted);
+  --md-default-fg-color--lightest: var(--opi-rule);
+
+  --md-typeset-color: var(--opi-ink);
+  --md-typeset-a-color: var(--opi-orange-ink);
+  --md-typeset-table-color: var(--opi-rule);
+
+  --md-code-bg-color: #1a1917;
+  --md-code-fg-color: #efe9dd;
+  --md-code-hl-color: rgba(217, 100, 26, 0.25);
+  --md-code-hl-number-color: #e8a26a;
+  --md-code-hl-special-color: #e8a26a;
+  --md-code-hl-function-color: #d6c7a8;
+  --md-code-hl-constant-color: #e8a26a;
+  --md-code-hl-keyword-color: #d6c7a8;
+  --md-code-hl-string-color: #b9c8a2;
+  --md-code-hl-name-color: #efe9dd;
+  --md-code-hl-operator-color: #bfb8a8;
+  --md-code-hl-punctuation-color: #bfb8a8;
+  --md-code-hl-comment-color: #8a847a;
+  --md-code-hl-generic-color: #bfb8a8;
+  --md-code-hl-variable-color: #efe9dd;
+
+  --md-footer-bg-color: var(--opi-black);
+  --md-footer-bg-color--dark: #000000;
+  --md-footer-fg-color: var(--opi-paper);
+  --md-footer-fg-color--light: #bfb8a8;
+  --md-footer-fg-color--lighter: #8a847a;
+
+  --md-admonition-fg-color: var(--opi-ink);
+  --md-admonition-bg-color: var(--opi-paper-2);
+}
+
+/* ── Type and measure ────────────────────────────────────────────────── */
+.md-typeset {
+  font-size: 0.82rem;
+  line-height: 1.62;
+}
+.md-typeset h1 {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--opi-ink);
+  margin-bottom: 1.2em;
+}
+.md-typeset h2 {
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  margin-top: 2.4em;
+  padding-top: 1.2em;
+  border-top: 1px solid var(--opi-rule);
+}
+.md-typeset h3 { font-weight: 600; }
+.md-typeset h1 code, .md-typeset h2 code, .md-typeset h3 code {
+  font-size: 0.9em;
+}
+
+/* Comfortable prose measure; reference pages may run wider. */
+.md-content__inner { max-width: 72ch; }
+.opi-wide .md-content__inner { max-width: 96ch; }
+.md-content__inner > .md-typeset table:not([class]) { display: table; width: 100%; }
+
+/* Rules, not boxes. */
+.md-typeset hr {
+  border-bottom: 1px solid var(--opi-rule);
+  margin: 2.2em 0;
+}
+.md-typeset table:not([class]) {
+  border: 0;
+  border-top: 1px solid var(--opi-ink);
+  border-bottom: 1px solid var(--opi-rule);
+  box-shadow: none;
+  font-size: 0.8rem;
+}
+.md-typeset table:not([class]) th {
+  background: transparent;
+  color: var(--opi-ink);
+  border-bottom: 1px solid var(--opi-rule);
+  font-weight: 600;
+}
+.md-typeset table:not([class]) td { border-top: 1px solid var(--opi-rule); }
+
+/* Links: one quiet style. */
+.md-typeset a { text-decoration: none; border-bottom: 1px solid rgba(179, 79, 15, 0.35); }
+.md-typeset a:hover { color: var(--opi-orange); border-bottom-color: var(--opi-orange); }
+.md-typeset a code { color: inherit; }
+
+/* Inline code is a marker for filenames and keys, not a highlight. */
+.md-typeset code {
+  background: var(--opi-paper-2);
+  color: var(--opi-ink);
+  border-radius: 2px;
+  padding: 0 0.3em;
+}
+.md-typeset pre > code { background: transparent; color: var(--md-code-fg-color); }
+
+/* Code blocks: dark surface, copy button, visible language label.
+   Material 9.6 paints the block only through the `code` background this
+   inherits into — say it explicitly so the block is dark on light pages. */
+.md-typeset .highlight { position: relative; }
+.md-typeset pre { background: var(--md-code-bg-color); }
+.md-typeset .highlight > pre,
+.md-typeset pre {
+  border-radius: 4px;
+}
+.md-typeset .highlight[class*="language-"]::before {
+  content: attr(data-lang);
+  display: block;
+  margin: 0 0 0.3rem;
+  font: 600 0.58rem/1 "JetBrains Mono", ui-monospace, monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--opi-muted);
+}
+.md-typeset .highlight.language-bash::before { content: "bash"; }
+.md-typeset .highlight.language-json::before { content: "json"; }
+.md-typeset .highlight.language-python::before { content: "python"; }
+.md-typeset .highlight.language-text::before { content: "output"; }
+.md-typeset .highlight.language-yaml::before { content: "yaml"; }
+.md-typeset .highlight.language-jsonl::before { content: "jsonl"; }
+.md-clipboard { color: #8a847a; }
+.md-clipboard:hover { color: var(--opi-orange); }
+
+/* Semantic colour only where it carries meaning: validator output. */
+.md-typeset .highlight.language-text .gp, /* not used by pygments text lexer; kept for parity */
+.opi-valid { color: var(--opi-valid); }
+.opi-warn { color: var(--opi-warn); }
+.opi-invalid { color: var(--opi-invalid); }
+
+/* Buttons: one primary, one quiet. */
+.md-typeset .md-button {
+  border: 1px solid var(--opi-ink);
+  border-radius: 3px;
+  color: var(--opi-ink);
+  font-weight: 600;
+  padding: 0.55em 1.1em;
+  text-decoration: none;
+}
+.md-typeset .md-button--primary {
+  background: var(--opi-orange);
+  border-color: var(--opi-orange);
+  color: #fff;
+}
+.md-typeset .md-button--primary:hover {
+  background: var(--opi-orange-ink);
+  border-color: var(--opi-orange-ink);
+  color: #fff;
+}
+.md-typeset .md-button:hover:not(.md-button--primary) {
+  background: var(--opi-paper-2);
+  color: var(--opi-ink);
+  border-color: var(--opi-ink);
+}
+
+/* Admonitions: warnings and status only. Quiet. */
+.md-typeset .admonition, .md-typeset details {
+  border-width: 0 0 0 3px;
+  box-shadow: none;
+  background: var(--opi-paper-2);
+  font-size: 0.78rem;
+}
+.md-typeset .admonition-title, .md-typeset summary {
+  background: transparent !important;
+  font-weight: 600;
+}
+
+/* Header and tabs: near-black band, accent on the active tab only. */
+.md-header, .md-tabs { background: var(--opi-black); color: var(--opi-paper); }
+.md-header__title { font-weight: 600; letter-spacing: 0.01em; }
+.md-tabs__link { opacity: 0.72; }
+.md-tabs__link--active, .md-tabs__link:hover { opacity: 1; color: var(--opi-orange); }
+.md-nav__link--active, .md-nav__link:hover { color: var(--opi-orange-ink); }
+.md-search__form { background: rgba(255,255,255,0.08); }
+
+/* ── Homepage ────────────────────────────────────────────────────────── */
+.opi-home .md-content__inner { max-width: none; padding-top: 0; }
+.opi-home .md-content__inner > h1:first-child { display: none; } /* the hero is the title */
+.opi-home .md-sidebar--secondary { display: none; }
+/* The poster page: the tabs carry navigation, the tree sidebar only
+   duplicates "Home" — drop it on desktop so the hero gets the full
+   measure. Below 60em the primary sidebar IS the hamburger drawer, so
+   this must never apply there. */
+@media screen and (min-width: 60em) {
+  .opi-home .md-sidebar--primary { display: none; }
+}
+
+.opi-band {
+  background: var(--opi-black);
+  color: var(--opi-paper);
+  margin: 0 -0.8rem;
+  padding: 1.8rem 0.8rem 2.2rem;
+}
+@media screen and (min-width: 76.25em) {
+  .opi-band { margin: 0 -1.2rem; padding: 2.8rem 1.2rem 2.8rem; }
+}
+.opi-band a { color: var(--opi-paper); border-bottom-color: rgba(246,242,234,0.35); }
+.opi-band a:hover { color: var(--opi-orange); }
+
+.opi-hero {
+  max-width: 72rem;
+  margin: 0 auto;
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: start;
+}
+@media screen and (min-width: 60em) {
+  .opi-hero { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 2.6rem; }
+}
+/* Grid items must be allowed to shrink below their min-content, or the
+   pre's longest line forces the track (and the page) wider than a phone. */
+.opi-hero > div { min-width: 0; }
+.opi-kicker {
+  font: 600 0.62rem/1 "JetBrains Mono", ui-monospace, monospace;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--opi-orange);
+  margin: 0 0 0.6rem;
+}
+.opi-hero h1.opi-title {
+  font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+  line-height: 1.05;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.7rem;
+  color: var(--opi-paper);
+}
+.opi-hero h1.opi-title span { color: var(--opi-muted); font-weight: 500; }
+.opi-lede {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #d6d0c4;
+  margin: 0 0 1rem;
+  max-width: 44ch;
+}
+.opi-files {
+  font: 500 0.9rem/1.5 "JetBrains Mono", ui-monospace, monospace;
+  color: var(--opi-paper);
+  margin: 0 0 1rem;
+}
+.opi-files .opi-plus { color: var(--opi-muted); margin: 0 0.6em; }
+.opi-files .opi-ext { color: var(--opi-orange); }
+.opi-actions .md-button { margin: 0 0.6rem 0.6rem 0; }
+.opi-band .md-button { border-color: var(--opi-paper); color: var(--opi-paper); }
+.opi-band .md-button:hover:not(.md-button--primary) { background: rgba(246,242,234,0.08); color: var(--opi-paper); border-color: var(--opi-paper); }
+.opi-band .md-button--primary { border-color: var(--opi-orange); color: #fff; }
+
+/* The hero's example: a real manifest excerpt. */
+.opi-hero .highlight { margin: 0; }
+.opi-hero .highlight[class*="language-"]::before { display: none; } /* the caption says it */
+.opi-hero .highlight pre { font-size: 0.72rem; line-height: 1.5; max-height: 26rem; }
+.opi-hero-caption {
+  font-size: 0.7rem;
+  color: var(--opi-muted);
+  margin: 0.6rem 0 0;
+}
+
+/* Sections on the reading surface. */
+.opi-section { max-width: 72ch; margin: 0 auto; padding: 3.2rem 0 0.4rem; }
+.opi-section h2 { border-top: 0; margin-top: 0; padding-top: 0; }
+.opi-section--wide { max-width: 96ch; }
+
+/* Three guarantees: text blocks separated by rules — not cards. */
+.opi-guarantees { display: grid; grid-template-columns: 1fr; margin: 1.6rem 0 0; }
+@media screen and (min-width: 60em) { .opi-guarantees { grid-template-columns: repeat(3, 1fr); gap: 0 2.4rem; } }
+.opi-guarantees > div { border-top: 1px solid var(--opi-ink); padding: 1rem 0 1.4rem; }
+.opi-guarantees h3 { margin: 0 0 0.5rem; font-size: 1rem; }
+.opi-guarantees p { margin: 0; font-size: 0.8rem; }
+
+/* Workflow band: produce → verify → consume, and the one restrained reveal. */
+.opi-band--workflow { background: var(--opi-ink); padding-top: 3rem; padding-bottom: 3rem; margin-top: 3rem; }
+.opi-band--workflow h2 { color: var(--opi-paper); border: 0; margin: 0 0 1.6rem; padding: 0; }
+.opi-steps { max-width: 96ch; margin: 0 auto; }
+.opi-steps ol { list-style: none; counter-reset: step; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr; gap: 1.2rem; }
+@media screen and (min-width: 60em) { .opi-steps ol { grid-template-columns: repeat(3, 1fr); gap: 2rem; } }
+.opi-steps li { counter-increment: step; border-top: 1px solid rgba(246,242,234,0.25); padding-top: 0.9rem; margin: 0; }
+.opi-steps li::before {
+  content: counter(step, decimal-leading-zero);
+  display: block;
+  font: 600 0.62rem/1 "JetBrains Mono", ui-monospace, monospace;
+  letter-spacing: 0.12em;
+  color: var(--opi-orange);
+  margin-bottom: 0.6rem;
+}
+.opi-steps h3 { color: var(--opi-paper); margin: 0 0 0.4rem; font-size: 1rem; }
+.opi-steps p { color: #d6d0c4; margin: 0; font-size: 0.8rem; }
+.opi-steps code { background: rgba(246,242,234,0.1); color: var(--opi-paper); }
+
+/* The reveal: filename → manifest → validation → consumption. Pure CSS,
+   driven by :hover/:focus-within, staged with transition delays. Reduced
+   motion: everything is simply visible. */
+.md-typeset details.opi-reveal {
+  max-width: 96ch;
+  margin: 2.2rem auto 0;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  box-shadow: none;
+  font: 500 0.78rem/1.6 "JetBrains Mono", ui-monospace, monospace;
+  color: #d6d0c4;
+}
+.opi-reveal summary {
+  cursor: pointer;
+  list-style: none;
+  color: var(--opi-paper);
+  padding: 0.4rem 0;
+  border-top: 1px solid rgba(246,242,234,0.25);
+  border-bottom: 1px solid rgba(246,242,234,0.25);
+}
+.opi-reveal summary::-webkit-details-marker { display: none; }
+.opi-reveal summary::before {
+  content: "▸ ";
+  color: var(--opi-orange);
+}
+/* Material stamps its note-admonition icon onto every bare summary:before
+   (background + mask + fixed box); undo that for this one. */
+.md-typeset details.opi-reveal summary::before {
+  background: none;
+  -webkit-mask-image: none;
+  mask-image: none;
+  width: auto;
+  height: auto;
+  float: none;
+  margin: 0;
+}
+.opi-reveal[open] summary::before { content: "▾ "; }
+.opi-reveal .opi-stage {
+  border-bottom: 1px solid rgba(246,242,234,0.12);
+  padding: 0.7rem 0;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 320ms ease, transform 320ms ease;
+}
+.opi-reveal[open] .opi-stage { opacity: 1; transform: none; }
+.opi-reveal[open] .opi-stage:nth-of-type(1) { transition-delay: 60ms; }
+.opi-reveal[open] .opi-stage:nth-of-type(2) { transition-delay: 320ms; }
+.opi-reveal[open] .opi-stage:nth-of-type(3) { transition-delay: 620ms; }
+.opi-stage .opi-label {
+  display: block;
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--opi-orange);
+  margin-bottom: 0.3rem;
+}
+.opi-stage pre { margin: 0; background: transparent; padding: 0; font-size: 0.74rem; color: #d6d0c4; }
+.opi-stage .opi-valid { color: #7fc79c; }
+@media (prefers-reduced-motion: reduce) {
+  .opi-reveal .opi-stage { transition: none; }
+}
+
+/* Two paths to build. */
+.opi-paths { display: grid; grid-template-columns: 1fr; gap: 0 2.4rem; margin-top: 1.4rem; }
+@media screen and (min-width: 60em) { .opi-paths { grid-template-columns: 1fr 1fr; } }
+.opi-paths > div { border-top: 1px solid var(--opi-ink); padding: 1rem 0 1.4rem; }
+.opi-paths h3 { margin: 0 0 0.5rem; font-size: 1rem; }
+.opi-paths ul { margin: 0.4rem 0 0; }
+
+.opi-final {
+  max-width: 72ch;
+  margin: 2.4rem auto 3rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--opi-ink);
+  color: var(--opi-muted);
+  font-size: 0.8rem;
+}
+
+/* Status page: one table, semantic words. */
+.opi-status-pre { color: var(--opi-warn); font-weight: 600; }
+.opi-status-done { color: var(--opi-valid); font-weight: 600; }
+.opi-status-pending { color: var(--opi-muted); font-weight: 600; }

@@ -1,0 +1,40 @@
+{
+  "description": "run_id = sha256(JCS({model_version,producer,sha256}))[:32]",
+  "cases": [
+    {
+      "producer": "shots:scenedetect",
+      "model_version": "scenedetect-0.7",
+      "sha256": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad",
+      "payload": "{\"model_version\":\"scenedetect-0.7\",\"producer\":\"shots:scenedetect\",\"sha256\":\"ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad\"}",
+      "run_id": "ae376c03119b8fb64601add4403be7d9"
+    },
+    {
+      "producer": "asr:whisper",
+      "model_version": "large-v3",
+      "sha256": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad",
+      "payload": "{\"model_version\":\"large-v3\",\"producer\":\"asr:whisper\",\"sha256\":\"ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad\"}",
+      "run_id": "a1d13be5b1c35536080e1ac029dce185"
+    },
+    {
+      "producer": "x-acme:ünïcode",
+      "model_version": "1",
+      "sha256": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad",
+      "payload": "{\"model_version\":\"1\",\"producer\":\"x-acme:ünïcode\",\"sha256\":\"ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad\"}",
+      "run_id": "8e5b1c815f6a50c638df9b244941e6b3"
+    },
+    {
+      "producer": "emb:visual",
+      "model_version": "open_clip-ViT-B-32-laion2b_s34b_b79k",
+      "sha256": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad",
+      "payload": "{\"model_version\":\"open_clip-ViT-B-32-laion2b_s34b_b79k\",\"producer\":\"emb:visual\",\"sha256\":\"ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad\"}",
+      "run_id": "321e9c866f09d9e9a22cdc6997c0186d"
+    },
+    {
+      "producer": "facet:camera_motion",
+      "model_version": "lk-affine-ransac-1.0",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "payload": "{\"model_version\":\"lk-affine-ransac-1.0\",\"producer\":\"facet:camera_motion\",\"sha256\":\"0000000000000000000000000000000000000000000000000000000000000000\"}",
+      "run_id": "389b695aeef34954598ad9b1cd130da1"
+    }
+  ]
+}

@@ -6,9 +6,9 @@
 > paths, identifiers and machine names from every commit. Commit hashes
 > before this date are not stable and refer to the private archive copy.
 
-## Public alpha — 2026-10-09
+## 0.0.10 — 2026-10-09
 
-The reference implementation remains 0.0.9 and the format remains major 0,
+The reference implementation is 0.0.10 and the format remains major 0,
 pre-freeze. Public source access, contribution guidance, and private
 vulnerability reporting are available. Install from a validated source
 commit; no PyPI distribution, registration, or format freeze is claimed.

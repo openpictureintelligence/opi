@@ -10,7 +10,7 @@ This package is deliberately standard-library only, so `opi/validate.py`
 can be copied out of the tree and run anywhere Python runs.
 """
 
-__version__ = "0.0.9"
+__version__ = "0.0.10"
 
 SPEC_VERSION = 0            # integer major the writer emits; 0 = pre-freeze
 EXTENSION = ".opi"

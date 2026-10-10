@@ -1,7 +1,7 @@
 # Status
 
 **As of 2026-10-09.** Format version **0, pre-freeze**. Reference
-implementation `openpicture` **0.0.9**. Every claim on this page is tied
+implementation `openpicture` **0.0.10**. Every claim on this page is tied
 to that date or that version; when they move, this page moves.
 
 ## What "pre-freeze" means
